@@ -1,79 +1,38 @@
-/* src/App.css */
-body {
-    font-family: 'Merriweather', serif; /* Cambia la fuente según prefieras */
-    background-color: #F0F0F5;
-    margin: 0;
-    padding: 20px;
-    color: #333;
+.App {
+  text-align: center;
 }
 
-h1 {
-    color: #2B2B72;
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 2.5em;
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
 
-h2 {
-    color: #2B2B72;
-    margin-top: 20px;
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    background-color: #FFFFFF;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
-input, select {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.App-link {
+  color: #61dafb;
 }
 
-button {
-    background-color: #4A90E2;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-button:hover {
-    background-color: #357ABD;
-}
-
-.prestamos-vencidos {
-    background-color: #fff3cd; /* Color de fondo amarillo claro */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
-}
-
-.prestamos-vencidos ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.prestamos-vencidos li {
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* Comprobante styles */
-.comprobante {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 20px;
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

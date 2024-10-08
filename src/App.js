@@ -1,31 +1,25 @@
-// src/App.js
-import React, { useState, useEffect } from 'react';
-import SolicitudPrestamoForm from './solicitudprestamo';
-import PantallaBibliotecario from './pantallabibli';
-import './app.css';
-import Login from './login';
+import logo from './logo.svg';
+import './App.css';
 
-const App = () => {
-    const [prestamos, setPrestamos] = useState([]);
-    const [role, setRole] = useState(null);
-
-    // Recuperar préstamos al cargar la aplicación
-    useEffect(() => {
-        const storedPrestamos = JSON.parse(localStorage.getItem('prestamos'));
-        if (storedPrestamos) {
-            setPrestamos(storedPrestamos);
-        }
-    }, []);
-
-    return (
-        <div>
-            <h1>Gestión de Préstamos de Biblioteca</h1>
-            {!role && <Login setRole={setRole} />}
-            
-            {role === 'cliente' && <SolicitudPrestamoForm setPrestamos={setPrestamos} />}
-            {role === 'bibliotecario' && <PantallaBibliotecario prestamos={prestamos} />}
-        </div>
-    );
-};
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
+    </div>
+  );
+}
 
 export default App;
