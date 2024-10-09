@@ -1,28 +1,79 @@
-import {useForm} from 'react-hook-form'
+import { useForm } from 'react-hook-form';
+import '../estilos/estilillo.css';
+import imagenRegistro from '../assets/logo.png';
 
-function PagRegistro(){
-    const {register, handleSubmit} = useForm()
-    return (
-        <div className='bg-slate-900 max-w-md p-10 rounded-md'>
-            <form onSubmit={handleSubmit((values) => {
-                    console.log(values)
-                })}
-            >
-                <input type="text" {...register("nombre", {required:true})}
-                className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2' 
-                placeholder='Nombre'/>
-                <input type="email" {...register("email", {required:true})}
-                className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2' 
-                placeholder='Email'/>
-                <input type="password" {...register("password", {required:true})}
-                className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2' 
-                placeholder='Password'/>
-                <button className='text-white'>
-                    Registrar
-                </button>
-            </form>
+function PagRegistro() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (values) => {
+    console.log(values);
+  };
+
+  return (
+    <div className="registro-container">
+      <img
+        src={imagenRegistro}
+        alt="Logo de registro"
+        className="imagen-registro"
+      />
+      <h2 className="registro-titulo">Registro de usuario</h2>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        {/* Campo Nombre */}
+        <div className="campo">
+          <input
+            type="text"
+            {...register('nombre', { required: 'El nombre es obligatorio' })}
+            className={`input ${errors.nombre ? 'input-error' : ''}`}
+            placeholder="Nombre"
+          />
+          {errors.nombre && (
+            <p className="mensaje-error">{errors.nombre.message}</p>
+          )}
         </div>
-    )
+
+        {/* Campo Email */}
+        <div className="campo">
+          <input
+            type="email"
+            {...register('email', {
+              required: 'El email es obligatorio',
+              pattern: {
+                value: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
+                message: 'Ingrese un email válido',
+              },
+            })}
+            className={`input ${errors.email ? 'input-error' : ''}`}
+            placeholder="Correo electrónico"
+          />
+          {errors.email && (
+            <p className="mensaje-error">{errors.email.message}</p>
+          )}
+        </div>
+
+        {/* Campo Contraseña */}
+        <div className="campo">
+          <input
+            type="password"
+            {...register('password', { required: 'La contraseña es obligatoria' })}
+            className={`input ${errors.password ? 'input-error' : ''}`}
+            placeholder="Contraseña"
+          />
+          {errors.password && (
+            <p className="mensaje-error">{errors.password.message}</p>
+          )}
+        </div>
+
+        {/* Botón Registrar */}
+        <button type="submit" className="boton-registrar">
+          Registrar
+        </button>
+      </form>
+    </div>
+  );
 }
 
-export default PagRegistro
+export default PagRegistro;
