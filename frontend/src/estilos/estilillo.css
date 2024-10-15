@@ -1,70 +1,140 @@
 /* PagRegistro.css */
 
-/* Contenedor principal */
+/* Fondo con gradiente */
 .registro-container {
-    background-color: #0f172a; /* Equivalente a bg-slate-900 */
-    max-width: 28rem; /* Equivalente a max-w-md */
-    margin: 2.5rem auto; /* mt-10 y mx-auto */
-    padding: 2.5rem; /* p-10 */
-    border-radius: 0.375rem; /* rounded-md */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
-  }
-  
-  /* Título del formulario */
-  .registro-titulo {
-    font-size: 1.5rem; /* text-2xl */
-    font-weight: bold; /* font-bold */
-    color: #ffffff; /* text-white */
-    margin-bottom: 1.5rem; /* mb-6 */
-    text-align: center; /* text-center */
-  }
-  
-  /* Estilos para cada campo */
-  .campo {
-    margin-bottom: 1rem; /* mb-4 */
-  }
-  
-  .campo:last-of-type {
-    margin-bottom: 1.5rem; /* mb-6 para el último campo */
-  }
-  
-  /* Estilos para los inputs */
-  .input {
-    width: 100%; /* w-full */
-    background-color: #3f3f46; /* bg-zinc-700 */
-    color: #ffffff; /* text-white */
-    padding: 0.5rem 1rem; /* py-2 px-4 */
-    border-radius: 0.375rem; /* rounded-md */
-    outline: none; /* focus:outline-none */
-    border: 1px solid transparent; /* border border-transparent */
-    box-sizing: border-box;
-  }
-  
-  
-  .input-error {
-    border: 2px solid #ef4444; /* border-red-500 border-2 */
-  }
-  
-  /* Mensajes de error */
-  .mensaje-error {
-    color: #ef4444; /* text-red-500 */
-    font-size: 0.875rem; /* text-sm */
-    margin-top: 0.25rem; /* mt-1 */
-  }
-  
-  /* Botón Registrar */
-  .boton-registrar {
-    width: 100%; /* w-full */
-    background-color: #2563eb; /* bg-blue-600 */
-    color: #ffffff; /* text-white */
-    font-weight: 600; /* font-semibold */
-    padding: 0.5rem 1rem; /* py-2 px-4 */
-    border-radius: 0.375rem; /* rounded-md */
-    transition: background-color 0.2s; /* transition duration-200 */
-    border: none;
-    cursor: pointer;
-  }
-  
-  .boton-registrar:hover {
-    background-color: #1d4ed8; /* bg-blue-700 */
-  }
+  background: linear-gradient(135deg, #2f2f46, #675670); /* Gradiente sutil */
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  padding: 30px; /* Aumentar el padding para más espacio */
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #2C2C3E;
+  padding: 30px 0; /* Más espacio en el header */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #1C1C2E;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+}
+
+.header h1 {
+  margin-left: 15px;
+  font-size: 34px; /* Tamaño de fuente aumentado */
+}
+
+.titulo-bec {
+  font-weight: 700; /* Más grosor para BEC */
+  color: white;
+}
+
+.titulo-biblioteca {
+  font-weight: 300; /* Menos grosor para Biblioteca Estación Central */
+  color: #B0B0D1; /* Color más suave */
+  margin-left: 10px;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+}
+
+/* Imagen debajo del header */
+.imagen-crear-cuenta {
+  margin-top: 120px; /* Espacio debajo del header */
+  width: 150px; /* Ajusta el tamaño de la imagen */
+  margin-bottom: 20px;
+}
+
+/* Texto decorativo */
+.descripcion {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 40px;
+  max-width: 600px;
+  line-height: 1.5;
+  color: #D1D1E9;
+}
+
+/* Estilos para el formulario */
+.form-wrapper {
+  background-color: #2C2C3E;
+  border: 2px solid #4E4E6B;
+  padding: 40px; /* Más padding en el formulario */
+  border-radius: 10px;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.registro-titulo {
+  font-size: 24px; /* Tamaño de la fuente ligeramente reducido */
+  font-weight: 400; /* Menos grosor para el título */
+  text-align: center;
+  margin-bottom: 25px; /* Más espacio debajo del título */
+  position: relative;
+}
+
+.registro-titulo::before, .registro-titulo::after {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: white; /* Color de los puntos */
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+.campo {
+  margin-bottom: 25px; /* Más espaciado entre los campos */
+}
+
+.input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.input-error {
+  border-color: red;
+}
+
+.mensaje-error {
+  color: red;
+  font-size: 12px;
+}
+
+.boton-registrar {
+  background-color: #6200ea;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+}
+
+.boton-registrar:hover {
+  background-color: #3700b3;
+}
+
+.imagen-registro {
+  margin-bottom: 20px;
+  width: 100px;
+}
