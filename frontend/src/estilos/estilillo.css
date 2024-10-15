@@ -2,7 +2,7 @@
 
 /* Fondo con gradiente */
 .registro-container {
-  background: linear-gradient(135deg, #2f2f46, #675670); /* Gradiente sutil */
+  background: linear-gradient(135deg, #2f2f46, #675670);
   color: white;
   min-height: 100vh;
   display: flex;
@@ -10,16 +10,16 @@
   align-items: center;
   justify-content: center;
   font-family: 'Poppins', sans-serif;
-  padding: 30px; /* Aumentar el padding para más espacio */
+  padding: 30px;
 }
 
-/* Header */
+/* Encabezado */
 .header {
   position: fixed;
   top: 0;
   width: 100%;
   background-color: #2C2C3E;
-  padding: 30px 0; /* Más espacio en el header */
+  padding: 30px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -33,17 +33,17 @@
 
 .header h1 {
   margin-left: 15px;
-  font-size: 34px; /* Tamaño de fuente aumentado */
+  font-size: 34px;
 }
 
 .titulo-bec {
-  font-weight: 700; /* Más grosor para BEC */
+  font-weight: 700;
   color: white;
 }
 
 .titulo-biblioteca {
-  font-weight: 300; /* Menos grosor para Biblioteca Estación Central */
-  color: #B0B0D1; /* Color más suave */
+  font-weight: 300;
+  color: #B0B0D1;
   margin-left: 10px;
 }
 
@@ -55,7 +55,7 @@
 /* Imagen debajo del header */
 .imagen-crear-cuenta {
   margin-top: 120px; /* Espacio debajo del header */
-  width: 150px; /* Ajusta el tamaño de la imagen */
+  width: 100px; /* Ajusta el tamaño de la imagen */
   margin-bottom: 20px;
 }
 
@@ -69,23 +69,23 @@
   color: #D1D1E9;
 }
 
-/* Estilos para el formulario */
+/* Formulario */
 .form-wrapper {
   background-color: #2C2C3E;
   border: 2px solid #4E4E6B;
-  padding: 40px; /* Más padding en el formulario */
+  padding: 40px;
   border-radius: 10px;
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .registro-titulo {
-  font-size: 24px; /* Tamaño de la fuente ligeramente reducido */
-  font-weight: 400; /* Menos grosor para el título */
+  font-size: 24px;
+  font-weight: 400;
   text-align: center;
-  margin-bottom: 25px; /* Más espacio debajo del título */
+  margin-bottom: 25px;
   position: relative;
 }
 
@@ -94,13 +94,13 @@
   display: inline-block;
   width: 8px;
   height: 8px;
-  background-color: white; /* Color de los puntos */
+  background-color: white;
   border-radius: 50%;
   margin: 0 10px;
 }
 
 .campo {
-  margin-bottom: 25px; /* Más espaciado entre los campos */
+  margin-bottom: 25px;
 }
 
 .input {
@@ -117,6 +117,26 @@
 .mensaje-error {
   color: red;
   font-size: 12px;
+}
+
+/* Foto de perfil */
+.input-file {
+  border: 1px solid #4E4E6B;
+  background-color: #3C3C57;
+  color: white;
+  padding: 8px;
+  width: 100%;
+  max-width: 100%; /* Asegura que el campo se ajuste al contenedor */
+  border-radius: 5px;
+}
+
+.input-file {
+  border: 1px solid #4E4E6B;
+  background-color: #3C3C57;
+  color: white;
+  padding: 8px;
+  width: 100%;
+  border-radius: 5px;
 }
 
 .boton-registrar {

@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import '../estilos/estilillo.css';
 import imagenRegistro from '../assets/logo.png';
-import imagenCrearCuenta from '../assets/crear_cuenta.png'; // Importa la imagen
+import imagenCrearCuenta from '../assets/crear_cuenta.png';
 
 function PagRegistro() {
   const {
@@ -16,7 +16,7 @@ function PagRegistro() {
 
   return (
     <div className="registro-container">
-      {/* Header */}
+      {/* Encabezado */}
       <header className="header">
         <div className="header-content">
           <img src={imagenRegistro} alt="Logo de registro" className="logo" />
@@ -38,49 +38,81 @@ function PagRegistro() {
       <div className="form-wrapper">
         <h2 className="registro-titulo">Registro de usuario</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
-          {/* Campo Nombre */}
+          {/* Campo Nombres */}
           <div className="campo">
             <input
               type="text"
-              {...register('nombre', { required: 'El nombre es obligatorio' })}
-              className={`input ${errors.nombre ? 'input-error' : ''}`}
-              placeholder="Nombre"
+              {...register('nombres', { required: 'Los nombres son obligatorios' })}
+              className={`input ${errors.nombres ? 'input-error' : ''}`}
+              placeholder="Nombres"
             />
-            {errors.nombre && (
-              <p className="mensaje-error">{errors.nombre.message}</p>
+            {errors.nombres && (
+              <p className="mensaje-error">{errors.nombres.message}</p>
             )}
           </div>
 
-          {/* Campo Email */}
+          {/* Campo Apellidos */}
           <div className="campo">
             <input
-              type="email"
-              {...register('email', {
-                required: 'El email es obligatorio',
-                pattern: {
-                  value: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
-                  message: 'Ingrese un email válido',
-                },
-              })}
-              className={`input ${errors.email ? 'input-error' : ''}`}
-              placeholder="Correo electrónico"
+              type="text"
+              {...register('apellidos', { required: 'Los apellidos son obligatorios' })}
+              className={`input ${errors.apellidos ? 'input-error' : ''}`}
+              placeholder="Apellidos"
             />
-            {errors.email && (
-              <p className="mensaje-error">{errors.email.message}</p>
+            {errors.apellidos && (
+              <p className="mensaje-error">{errors.apellidos.message}</p>
             )}
           </div>
 
-          {/* Campo Contraseña */}
+          {/* Campo RUT */}
           <div className="campo">
             <input
-              type="password"
-              {...register('password', { required: 'La contraseña es obligatoria' })}
-              className={`input ${errors.password ? 'input-error' : ''}`}
-              placeholder="Contraseña"
+              type="text"
+              {...register('rut', { required: 'El RUT es obligatorio' })}
+              className={`input ${errors.rut ? 'input-error' : ''}`}
+              placeholder="RUT"
             />
-            {errors.password && (
-              <p className="mensaje-error">{errors.password.message}</p>
+            {errors.rut && (
+              <p className="mensaje-error">{errors.rut.message}</p>
             )}
+          </div>
+
+          {/* Campo Teléfono */}
+          <div className="campo">
+            <input
+              type="tel"
+              {...register('telefono', { required: 'El teléfono es obligatorio' })}
+              className={`input ${errors.telefono ? 'input-error' : ''}`}
+              placeholder="Teléfono"
+            />
+            {errors.telefono && (
+              <p className="mensaje-error">{errors.telefono.message}</p>
+            )}
+          </div>
+
+          {/* Campo Dirección */}
+          <div className="campo">
+            <input
+              type="text"
+              {...register('direccion', { required: 'La dirección es obligatoria' })}
+              className={`input ${errors.direccion ? 'input-error' : ''}`}
+              placeholder="Dirección"
+            />
+            {errors.direccion && (
+              <p className="mensaje-error">{errors.direccion.message}</p>
+            )}
+          </div>
+
+          {/* Subir Foto de Perfil */}
+          <div className="campo">
+            <label htmlFor="fotoPerfil" className="label-foto-perfil">Foto de perfil</label>
+            <input
+              type="file"
+              id="fotoPerfil"
+              {...register('fotoPerfil')}
+              className="input-file"
+              accept="image/*"
+            />
           </div>
 
           {/* Botón Registrar */}
