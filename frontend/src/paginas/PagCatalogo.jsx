@@ -3,6 +3,7 @@ import '../estilos/estilillo.css';
 import '../estilos/PagCatalogo.css';
 import imagenRegistro from '../assets/logo.png';
 import iconoLupa from '../assets/icono_lupa.png';
+import imagenCatalogo from '../assets/catalogo.png';
 import { Link } from 'react-router-dom';
 
 function PagCatalogo(){
@@ -34,6 +35,9 @@ function PagCatalogo(){
                 <Link to="/login" className="nav-link">Iniciar sesión</Link>
                 <Link to="/registro" className="nav-link">Registro</Link>
             </nav>
+
+            {/* Imagencilla */}
+            <img src={imagenCatalogo} alt="imagen catalogo" className="imagen-crear-cuenta"/>
 
             <div className='form-catalogo'>
                 <form onSubmit={handleSubmit(onSubmit)}>
