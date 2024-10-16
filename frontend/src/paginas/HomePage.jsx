@@ -18,11 +18,11 @@ function Homepage() {
 
       {/* Navegación */}
       <nav className="nav">
-        <Link to="/"className="nav-link">Acerca de</Link>
+        <Link to="/" className="nav-link">Acerca de</Link>
         <Link to="/catalogo" className="nav-link">Catálogo</Link>
         <a href="busqueda.html" className="nav-link">Búsqueda por filtros</a>
         <a href="auth.html" className="nav-link">Inicio de Sesión</a>
-        <Link to="/Registro"className="nav-link">Registro</Link>
+        <Link to="/Registro" className="nav-link">Registro</Link>
       </nav>
 
       {/* Sección principal con mensaje y descripción */}
