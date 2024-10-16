@@ -1,0 +1,31 @@
+/**Estilo de la barra de búsquedad*/
+.search-box {
+    background: #fff;
+    width: 600px;
+    height: 50px;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    line-height: 50px;
+}
+
+/**Estilo de la barra de búsquedad en el ingreso de texto*/
+.search-box input {
+    color: black;
+    padding-left: 15px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    font-size: 20px;
+    width: 90%;
+}
+
+/**Estilo de la barra de búsquedad respecto al botón*/
+.search-box button {
+    padding: 10px 12px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    cursor: pointer;
+    text-align: center;
+}
