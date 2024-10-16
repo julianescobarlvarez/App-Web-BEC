@@ -1,4 +1,5 @@
-/* PagRegistro.css */
+
+/*------------------------Cosas del registro------------------------*/
 
 /* Fondo con gradiente */
 .registro-container {
@@ -157,4 +158,86 @@
 .imagen-registro {
   margin-bottom: 20px;
   width: 100px;
+}
+
+
+/*------------------------Cosas de la homepage------------------------*/
+
+
+/* Pie de página */
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #2C2C3E;
+  padding: 30px 0;
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid #1C1C2E;
+}
+
+footer p {
+  margin: 5px 0;
+}
+
+.hero {
+  font-size: 18px;
+  text-align: justify;
+  margin-bottom: 40px;
+  max-width: 900px;
+  line-height: 1.5;
+  color: #D1D1E9;
+}
+
+.homepage-container {
+  background: linear-gradient(135deg, #2f2f46, #675670);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  padding: 30px;
+}
+
+.hero-img {
+  width: 100%;
+  max-width: 300px;
+  margin-top: 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.hero-title {
+  font-size: 22px;
+  text-align: center;
+  margin-bottom: 40px;
+  max-width: 600px;
+  line-height: 1.5;
+  color: #e5e5f1;
+}
+
+/* Navegación */
+.nav {
+  width: 100%;
+  background-color: #2C2C3E;
+  padding: 30px 0;
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid #1C1C2E;
+  margin-bottom: 40px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  margin: 0 20px;
+  font-weight: bold;
+  transition: font-size 0.3s ease;
+}
+
+.nav-link:hover {
+  font-size: 1.2rem;
 }

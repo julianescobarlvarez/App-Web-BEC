@@ -2,13 +2,14 @@ import {BrowserRouter, Routes, Route } from 'react-router-dom'
 import PagLogin from './paginas/PagLogin'
 import PagRegistro from './paginas/PagRegistro'
 import SolicitudPrestamo from './paginas/SolicitudPrestamo'
+import HomePage from './paginas/HomePage';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route>
-          <Route path='/' element={<h1>Home Page</h1>} />
+          <Route path='/' element={<HomePage/>} />
           <Route path='/login' element={<PagLogin/>} />
           <Route path='/registro' element={<PagRegistro/>} />
           <Route path='/prestamo' element={<SolicitudPrestamo/>} />
