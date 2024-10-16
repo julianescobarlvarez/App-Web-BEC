@@ -14,7 +14,7 @@
     padding-left: 15px;
     border: 0;
     outline: 0;
-    background: transparent;
+    background: white;
     font-size: 20px;
     width: 90%;
 }
@@ -27,4 +27,38 @@
     background: transparent;
     cursor: pointer;
     text-align: center;
+}
+
+.filtro-busqueda {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filtro-busqueda button {
+    padding: 10px 20px;
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 35px;
+}
+
+.filtro-busqueda button:hover {
+    background-color: #3700b3;
+}
+
+.filtro-oculto {
+    margin-top: 30px;
+}
+
+.filtro-oculto select{
+    color: black;
+    border-radius: 5px;
+}
+
+.filtro-oculto input{
+    color: black;
+    border-radius: 5px;
 }

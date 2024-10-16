@@ -55,9 +55,16 @@
 
 /* Imagen debajo del header */
 .imagen-crear-cuenta {
-  margin-top: 120px; /* Espacio debajo del header */
+  margin-top: 30px; /* Espacio debajo del header */
   width: 100px; /* Ajusta el tamaño de la imagen */
   margin-bottom: 20px;
+}
+
+/* Imagen debajo del header */
+.imagen-principal-catalogo {
+  margin-top: 0px; /* Espacio debajo del header */
+  width: 100px; /* Ajusta el tamaño de la imagen */
+  margin-bottom: 40px;
 }
 
 /* Texto decorativo */
@@ -89,7 +96,7 @@
   padding: 40px;
   border-radius: 10px;
   width: 100%;
-  max-width: 600px;
+  max-width: 668px;
   margin: 0 auto;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }

@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { useState } from 'react'
 import '../estilos/estilillo.css';
 import '../estilos/PagCatalogo.css';
 import imagenRegistro from '../assets/logo.png';
@@ -9,6 +10,11 @@ import { Link } from 'react-router-dom';
 function PagCatalogo(){
     //dd
     const {register, handleSubmit} = useForm();
+    const [isVisible, setIsVisible] = useState(true);
+
+    const toggleDiv = () => {
+        setIsVisible(!isVisible);
+      };
 
     const onSubmit = (data) => {
         console.log(data.documento);
@@ -37,7 +43,7 @@ function PagCatalogo(){
             </nav>
 
             {/* Imagencilla */}
-            <img src={imagenCatalogo} alt="imagen catalogo" className="imagen-crear-cuenta"/>
+            <img src={imagenCatalogo} alt="imagen catalogo" className="imagen-principal-catalogo"/>
 
             <div className='form-catalogo'>
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -47,10 +53,39 @@ function PagCatalogo(){
                             type="text"
                             {...register("documento", { required: true })}
                             placeholder='Buscar recurso por nombre o autor del documento'
+                            autoComplete='off'
                         />
-                        <button type="submit" className="botonbuscar">
+                        <button type="submit" className='boton-lupa'>
                             <img src={iconoLupa} width="20px" />
                         </button>
+                    </div>
+                    <div className='filtro-busqueda'>
+                        <button type="submit" onClick={toggleDiv}>
+                            Filtro avanzado
+                        </button>
+                    </div>
+                    <div className='filtro-oculto'>
+                        <p>Tipo de recurso: </p>
+                        <select {...register('recursoSeleccionado')} defaultValue="">
+                            <option value="">Todos los recursos</option>
+                            <option value="articulo">Artículos</option>
+                            <option value="documento">Documentos técnicos</option>
+                            <option value="documental">Documentales</option>
+                            <option value="libro">Libros</option>
+                            <option value="relato">Relatos</option>
+                            <option value="audio">Recursos de audio</option>
+                        </select>
+                        <p>Idioma</p>
+                        <select {...register('idiomaSeleccionado')} defaultValue="">
+                            <option value="">Seleccione una opción</option>
+                            <option value="español">Español</option>
+                            <option value="ingles">Ingles</option>
+                        </select>
+                        <p>Fecha de publicación</p>
+                        <input
+                            type="date"
+                            {...register('selectedDate')} // Aquí puedes agregar validaciones si lo deseas
+                        />
                     </div>
                 </form>
             </div>
