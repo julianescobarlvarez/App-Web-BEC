@@ -64,7 +64,7 @@ function PagCatalogo(){
                             Filtro avanzado
                         </button>
                     </div>
-                    <div className='filtro-oculto'>
+                    <div className='filtro-oculto' style={{ display: isVisible ? 'block' : 'none' }}>
                         <p>Tipo de recurso: </p>
                         <select {...register('recursoSeleccionado')} defaultValue="">
                             <option value="">Todos los recursos</option>
@@ -77,14 +77,14 @@ function PagCatalogo(){
                         </select>
                         <p>Idioma</p>
                         <select {...register('idiomaSeleccionado')} defaultValue="">
-                            <option value="">Seleccione una opción</option>
+                            <option value="">Cualquier idioma</option>
                             <option value="español">Español</option>
                             <option value="ingles">Ingles</option>
                         </select>
                         <p>Fecha de publicación</p>
                         <input
                             type="date"
-                            {...register('selectedDate')} // Aquí puedes agregar validaciones si lo deseas
+                            {...register('selectedDate')}
                         />
                     </div>
                 </form>
