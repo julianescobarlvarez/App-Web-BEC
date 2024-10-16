@@ -3,6 +3,7 @@ import '../estilos/estilillo.css';
 import '../estilos/PagCatalogo.css';
 import imagenRegistro from '../assets/logo.png';
 import iconoLupa from '../assets/icono_lupa.png';
+import { Link } from 'react-router-dom';
 
 function PagCatalogo(){
     //dd
@@ -14,7 +15,7 @@ function PagCatalogo(){
     
     return(
         <div className="registro-container">
-            {/* Header */}
+            {/* Encabezado */}
             <header className="header">
                 <div className="header-content">
                     <img src={imagenRegistro} alt="Logo de registro" className="logo" />
@@ -24,7 +25,17 @@ function PagCatalogo(){
                     </h1>
                 </div>
             </header>
-            <div>
+
+            {/* Navegación */}
+            <nav className="nav_registro">
+                <Link to="/"className="nav-link">Acerca de</Link>
+                <Link to="/catalogo" className="nav-link">Catálogo</Link>
+                <a href="busqueda.html" className="nav-link">Búsqueda por filtros</a>
+                <a href="auth.html" className="nav-link">Inicio de Sesión</a>
+                <Link to="/Registro"className="nav-link">Registro</Link>
+            </nav>
+
+            <div className='form-catalogo'>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='search-box'>
                         {/*Campo de texto para el nombre del documento */}
@@ -44,20 +55,3 @@ function PagCatalogo(){
 }
 
 export default PagCatalogo
-
-/*
-function PagCatalogo(){
-    const [contador, setContador] = useState(0);
-
-    const incrementar = () => {
-        setContador(contador + 1);
-    };
-
-    return (
-    <div>
-        <p>Contador: {contador}</p>
-        <button onClick={incrementar}>Incrementar</button>
-    </div>
-  );
-}
-*/
