@@ -2,6 +2,7 @@ import React from 'react';
 import '../estilos/estilillo.css';
 import logo from '../assets/logo.png';
 import imagenBiblioteca from '../assets/imagen.jpg';
+import { Link } from 'react-router-dom';
 
 function Homepage() {
   return (
@@ -17,11 +18,11 @@ function Homepage() {
 
       {/* Navegación */}
       <nav className="nav">
-        <a href="#" className="nav-link">Acerca de</a>
+        <Link to="/"className="nav-link">Acerca de</Link>
         <a href="catalogo.html" className="nav-link">Catálogo</a>
         <a href="busqueda.html" className="nav-link">Búsqueda por filtros</a>
         <a href="auth.html" className="nav-link">Inicio de Sesión</a>
-        <a href="no.html" className="nav-link">Registro</a>
+        <Link to="/Registro"className="nav-link">Registro</Link>
       </nav>
 
       {/* Sección principal con mensaje y descripción */}

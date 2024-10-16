@@ -228,6 +228,19 @@ footer p {
   justify-content: center;
   border-bottom: 2px solid #1C1C2E;
   margin-bottom: 40px;
+  border-radius: 15px;
+}
+
+/* Navegación */
+.nav_registro {
+  margin-top: 130px;
+  width: 100%;
+  background-color: #2C2C3E;
+  padding: 30px 0;
+  display: flex;
+  justify-content: center;
+  border-bottom: 2px solid #1C1C2E;
+  border-radius: 15px;
 }
 
 .nav-link {

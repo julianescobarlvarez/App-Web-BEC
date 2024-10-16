@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import '../estilos/estilillo.css';
 import imagenRegistro from '../assets/logo.png';
 import imagenCrearCuenta from '../assets/crear_cuenta.png';
+import { Link } from 'react-router-dom';
 
 function PagRegistro() {
   const {
@@ -16,6 +17,7 @@ function PagRegistro() {
 
   return (
     <div className="registro-container">
+      
       {/* Encabezado */}
       <header className="header">
         <div className="header-content">
@@ -26,6 +28,15 @@ function PagRegistro() {
           </h1>
         </div>
       </header>
+
+      {/* Navegación */}
+      <nav className="nav_registro">
+        <Link to="/"className="nav-link">Acerca de</Link>
+        <a href="catalogo.html" className="nav-link">Catálogo</a>
+        <a href="busqueda.html" className="nav-link">Búsqueda por filtros</a>
+        <a href="auth.html" className="nav-link">Inicio de Sesión</a>
+        <Link to="/Registro"className="nav-link">Registro</Link>
+      </nav>
 
       {/* Imagen entre header y texto */}
       <img src={imagenCrearCuenta} alt="Crear cuenta" className="imagen-crear-cuenta" />
