@@ -46,7 +46,6 @@ function PagCatalogo(){
             <img src={imagenCatalogo} alt="imagen catalogo" className="imagen-principal-catalogo"
                 style={{marginTop: isVisible ? '120px' : '0px'}}
             />
-            {/*style={{marginTop: isVisible ? '50px' : '0px'}} */}
             <div className='form-catalogo'>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='search-box'>
