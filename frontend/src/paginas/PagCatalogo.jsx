@@ -8,20 +8,44 @@ import imagenCatalogo from '../assets/catalogo.png';
 import { Link } from 'react-router-dom';
 
 function PagCatalogo(){
-    //dd
+    //Funciones del UseForm y UseState
     const {register, handleSubmit} = useForm();
-    const [isVisible, setIsVisible] = useState(true);
+    const [isVisible, setIsVisible] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedOption, setSelectedOption] = useState(null);
+    const options = [
+        'Cualquier recurso',
+        'Artículos', 
+        'Documentos técnicos', 
+        'Documentales', 
+        'Libros', 
+        'Relatos',
+        'Recursos de audio'
+    ];
 
+    //Función para la visibilidad del filtro
     const toggleDiv = () => {
         setIsVisible(!isVisible);
-      };
+    };
+ 
+    //Función para la visibilidad de las opciones
+    const toggleDropdown = () => {
+        setIsOpen(!isOpen);
+    };
+  
+    //
+    const handleOptionClick = (option) => {
+        setSelectedOption(option);
+        setIsOpen(false);
+    };
 
+    //Función para captar los datos ingresados por el usuario y utilizarlos posteriormente
     const onSubmit = (data) => {
         console.log(data.documento);
     };
     
     return(
-        <div className="registro-container">
+        <div className="registro-container" style={{ position: isOpen ? 'fixed' : 'static'}}>
             {/* Encabezado */}
             <header className="header">
                 <div className="header-content">
@@ -43,9 +67,7 @@ function PagCatalogo(){
             </nav>
 
             {/* Imagencilla */}
-            <img src={imagenCatalogo} alt="imagen catalogo" className="imagen-principal-catalogo"
-                style={{marginTop: isVisible ? '120px' : '0px'}}
-            />
+            <img src={imagenCatalogo} alt="imagen catalogo" className="imagen-principal-catalogo"/>
             <div className='form-catalogo'>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='search-box'>
@@ -62,10 +84,45 @@ function PagCatalogo(){
                     </div>
                     <div className='filtro-busqueda'>
                         <button type="submit" onClick={toggleDiv}>
-                            Filtro avanzado
+                            Filtro {isVisible ? 'simple' : 'avanzado'}
                         </button>
                     </div>
-                    <div className='filtro-oculto' style={{ display: isVisible ? 'block' : 'none'}}>
+                    <div className='filtro-oculto' style={{ display: isVisible ? 'flex' : 'none'}}>
+                        <p>Tipo de recurso: </p>
+                        <button onClick={toggleDropdown} className="dropdown-button">
+                            {selectedOption || 'Selecciona una opción'}
+                        </button>
+                        {isOpen && (
+                            <div className="dropdown-list-container">
+                                <ul className="dropdown-list">
+                                    {options.map((option) => (
+                                        <li key={option} onClick={() => handleOptionClick(option)} className="dropdown-item">
+                                            {option}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+
+
+                        <p>Idioma: </p>
+                        <button onClick={toggleDropdown} className="dropdown-button">
+                            {selectedOption || 'Selecciona una opción'}
+                        </button>
+                        {isOpen && (
+                            <div className="dropdown-list-container">
+                                <ul className="dropdown-list">
+                                    {options.map((option) => (
+                                        <li key={option} onClick={() => handleOptionClick(option)} className="dropdown-item">
+                                            {option}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        )}
+
+                        
+                        {/*
                         <p>Tipo de recurso: </p>
                         <select {...register('recursoSeleccionado')} defaultValue="">
                             <option value="">Todos los recursos</option>
@@ -87,8 +144,72 @@ function PagCatalogo(){
                             type="date"
                             {...register('selectedDate')} // Aquí puedes agregar validaciones si lo deseas
                         />
+                        */}
                     </div>
                 </form>
+            </div>
+            <div>
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
+                Otras cuadritos para información, y posteriormente, mostrar los recursos
             </div>
         </div>
     );

@@ -62,9 +62,9 @@
 
 /* Imagen debajo del header */
 .imagen-principal-catalogo {
-  margin-top: 0px; /* Espacio debajo del header */
+  margin-top: 230px;
   width: 100px; /* Ajusta el tamaño de la imagen */
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 /* Texto decorativo */
@@ -91,14 +91,14 @@
 
 /* Formulario */
 .form-catalogo {
-  background-color: #2C2C3E;
-  border: 2px solid #4E4E6B;
+  /*background-color: #2C2C3E;*/
+  /*border: 2px solid #4E4E6B;*/
   padding: 40px;
   border-radius: 10px;
   width: 100%;
   max-width: 668px;
   margin: 0 auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  /*box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);*/
 }
 
 .registro-titulo {
@@ -266,9 +266,9 @@ footer p {
 /* Navegación en catálogo */
 .nav-catalogo {
   top: 15%;
-  position: absolute;
+  position: fixed;
   margin-top: 0px;
-  width: 97%;
+  width: 98%;
   background-color: #2C2C3E;
   padding: 30px 0;
   display: flex;
@@ -276,6 +276,7 @@ footer p {
   border-bottom: 2px solid #1C1C2E;
   margin-bottom: 40px;
   border-radius: 15px;
+  /*transition: top 0.3s;*/
 }
 
 .nav-link {
