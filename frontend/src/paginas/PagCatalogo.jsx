@@ -43,8 +43,10 @@ function PagCatalogo(){
             </nav>
 
             {/* Imagencilla */}
-            <img src={imagenCatalogo} alt="imagen catalogo" className="imagen-principal-catalogo"/>
-
+            <img src={imagenCatalogo} alt="imagen catalogo" className="imagen-principal-catalogo"
+                style={{marginTop: isVisible ? '120px' : '0px'}}
+            />
+            {/*style={{marginTop: isVisible ? '50px' : '0px'}} */}
             <div className='form-catalogo'>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='search-box'>
@@ -64,7 +66,7 @@ function PagCatalogo(){
                             Filtro avanzado
                         </button>
                     </div>
-                    <div className='filtro-oculto' style={{ display: isVisible ? 'block' : 'none' }}>
+                    <div className='filtro-oculto' style={{ display: isVisible ? 'block' : 'none'}}>
                         <p>Tipo de recurso: </p>
                         <select {...register('recursoSeleccionado')} defaultValue="">
                             <option value="">Todos los recursos</option>
@@ -84,7 +86,7 @@ function PagCatalogo(){
                         <p>Fecha de publicación</p>
                         <input
                             type="date"
-                            {...register('selectedDate')}
+                            {...register('selectedDate')} // Aquí puedes agregar validaciones si lo deseas
                         />
                     </div>
                 </form>
