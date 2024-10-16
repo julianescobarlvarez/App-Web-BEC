@@ -1,6 +1,7 @@
 import React, { useState } from 'react' // Importa React y el hook useState
 import { useForm } from 'react-hook-form' // Importa useForm para manejar el formulario
 import { useNavigate } from 'react-router-dom' // Importa useNavigate para redirigir entre rutas
+import '../estilos/estilillo.css';
 
 function PagLogin() {
     const { register, handleSubmit, formState: { errors } } = useForm() // Inicializa el formulario
@@ -18,7 +19,7 @@ function PagLogin() {
     }
 
     return (
-        <div className='bg-slate-900 max-w-md p-10 rounded-md mx-auto mt-10'>
+        <div className='registro-container'>
             <h2 className="text-2xl font-bold text-white mb-4">Sistema de Préstamo y Devolución</h2>
             <form onSubmit={handleSubmit(onSubmit)}> {/* Maneja el envío del formulario */}
                 <input 

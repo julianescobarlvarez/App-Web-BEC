@@ -1,4 +1,5 @@
-import { useForm } from 'react-hook-form'; 
+import { useForm } from 'react-hook-form';
+import '../estilos/estilillo.css';
 
 function SolicitudPrestamo({ setPrestamos }) {
     // Usa useForm para manejar el registro y el manejo del formulario
@@ -35,7 +36,7 @@ function SolicitudPrestamo({ setPrestamos }) {
     };
 
     return (
-        <div className='bg-slate-900 max-w-md p-10 rounded-md'>
+        <div className='registro-container'>
             <form onSubmit={handleSubmit(onSubmit)}>
                 {/*Campo de texto para el nombre del documento */}
                 <input
