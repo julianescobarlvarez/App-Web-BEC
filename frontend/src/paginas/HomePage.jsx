@@ -19,7 +19,7 @@ function Homepage() {
       {/* Navegación */}
       <nav className="nav">
         <Link to="/"className="nav-link">Acerca de</Link>
-        <a href="catalogo.html" className="nav-link">Catálogo</a>
+        <Link to="/catalogo" className="nav-link">Catálogo</Link>
         <a href="busqueda.html" className="nav-link">Búsqueda por filtros</a>
         <a href="auth.html" className="nav-link">Inicio de Sesión</a>
         <Link to="/Registro"className="nav-link">Registro</Link>
