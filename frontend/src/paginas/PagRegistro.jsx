@@ -31,11 +31,11 @@ function PagRegistro() {
 
       {/* Navegación */}
       <nav className="nav_registro">
-        <Link to="/"className="nav-link">Acerca de</Link>
+        <Link to="/" className="nav-link">Acerca de</Link>
         <Link to="/catalogo" className="nav-link">Catálogo</Link>
-        <a href="busqueda.html" className="nav-link">Búsqueda por filtros</a>
-        <a href="auth.html" className="nav-link">Inicio de Sesión</a>
-        <Link to="/Registro"className="nav-link">Registro</Link>
+        <Link to="/prestamo" className="nav-link">Préstamo</Link>
+        <Link to="/login" className="nav-link">Iniciar sesión</Link>
+        <Link to="/registro" className="nav-link">Registro</Link>
       </nav>
 
       {/* Imagen entre header y texto */}

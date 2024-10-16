@@ -15,10 +15,6 @@ function App() {
           <Route path='/registro' element={<PagRegistro/>} />
           <Route path='/prestamo' element={<SolicitudPrestamo/>} />
           <Route path='/catalogo' element={<PagCatalogo/>} />
-          <Route path='/tareas' element={<h1>Tareas</h1>} />
-          <Route path='/agregarTarea' element={<h1>Nueva Tarea</h1>} />
-          <Route path='/tarea/:id' element={<h1>Actualizar Tarea</h1>} />
-          <Route path='/perfil' element={<h1>Perfil</h1>} />
         </Route>
       </Routes>
     </BrowserRouter>
