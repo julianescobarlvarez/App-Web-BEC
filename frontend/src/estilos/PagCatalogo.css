@@ -1,3 +1,34 @@
+/* Navegación en catálogo */
+.nav-catalogo {
+    top: 17%;
+    position: fixed;
+    margin-top: 0px;
+    width: 98%;
+    background-color: #2C2C3E;
+    padding: 30px 0;
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid #1C1C2E;
+    margin-bottom: 40px;
+    border-radius: 15px;
+}
+
+/* Imagen debajo del header */
+.imagen-principal-catalogo {
+    margin-top: 265px;
+    width: 100px;
+    margin-bottom: 20px;
+  }
+
+/* Formulario */
+.form-catalogo {
+    padding: 40px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 668px;
+    margin: 0 auto;
+  }
+
 /**Estilo de la barra de búsquedad*/
 .search-box {
     background: #fff;
@@ -29,15 +60,17 @@
     text-align: center;
 }
 
+/**Estilo del contenedor para mostrar filtro*/
 .filtro-busqueda {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+/**Estilo del botón para mostrar filtro*/
 .filtro-busqueda button {
     padding: 10px 20px;
-    background-color: #6200ea;
+    background-color: #96478f;;
     color: white;
     border: none;
     border-radius: 5px;
@@ -45,10 +78,12 @@
     margin-top: 35px;
 }
 
+/**Estilo del botón para mostrar filtro al pasar el cursor*/
 .filtro-busqueda button:hover {
-    background-color: #3700b3;
+    background-color: #582864;
 }
 
+/**Estilo del contenedor del filtro*/
 .filtro-oculto {
     background-color: #2c2c3e7a;
     border: 2px solid #4E4E6B;
@@ -58,23 +93,29 @@
     overflow: hidden;
 }
 
+/**Estilo del contenedor del filtro respecto a las selecciones*/
 .filtro-oculto select{
     color: black;
     border-radius: 5px;
     margin-bottom: 15px;
+    width: 200px;
 }
 
+/**Estilo del contenedor del filtro respecto a la fecha*/
 .filtro-oculto input{
     color: black;
     border-radius: 5px;
+    width: 200px;
 }
 
+/**Estilo del contenedor del filtro cuando es mostrado*/
 .filtro-oculto.show {
     opacity: 1;
     height: auto; /* Asegúrate de que el contenido se ajuste */
     transition: opacity 0.3s ease;
 }
-  
+
+/**Estilo del contenedor del filtro cuando desaparece*/
 .filtro-oculto.hide {
     opacity: 0;
     height: 0;
@@ -82,6 +123,36 @@
     color: #2c2c3e7a;
 }
 
+/**Estilo del contenedor del botón de aplicar filtro*/
+.aplicar-filtro {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+/**Estilo del botón de aplicar filtro*/
+.aplicar-filtro button {
+    padding: 10px 20px;
+    background-color: #96478f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/**Estilo del boton de aplicar filtro al pasar el cursor*/
+.aplicar-filtro button:hover {
+    padding: 10px 20px;
+    background-color: #582864;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/**Estilo del título del parrafo del catálogo*/
 .catalogo-title {
     font-size: 22px;
     text-align: justify;
@@ -89,8 +160,9 @@
     max-width: 600px;
     line-height: 1.5;
     color: #e5e5f1;
-  }
+}
 
+/**Estilo del párrafo izquierdo*/
 .parrafos {
     background-color: #2c2c3e7a;
     border: 2px solid #4E4E6B;
@@ -100,7 +172,7 @@
     line-height: 1.5;
     color: #D1D1E9;
 }
-
+/**Estilo del párrafo derecho*/
 .parrafos2 {
     background-color: #2c2c3e7a;
     border: 2px solid #4E4E6B;
@@ -111,17 +183,19 @@
     color: #D1D1E9;
 }
 
+/**Estilo del contenedor de los 2 párrafos*/
 .contenedor-parrafos-catalogo {
     display: flex;
-    /*justify-content: space-between; Opcional, ajusta el espacio entre los divs */
     width: 70%;
     gap: 15px;
 }
 
+/**Estilo del contenedor de los 2 párrafos respecto al párrafo*/
 .contenedor-parrafos-catalogo p{
     text-align: justify;
 }
 
+/**Estilo del contenedor de los 2 párrafos respecto a la lista desordenada*/
 .contenedor-parrafos-catalogo ul{
     text-align: justify;
     list-style-type: disc;
