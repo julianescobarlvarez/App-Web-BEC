@@ -92,36 +92,29 @@ function PagCatalogo(){
             </div>
             <div className='contenedor-parrafos-catalogo'>
                 <div className='parrafos'>
-                    <h2 className="hero-title">
+                    <h2 className="catalogo-title">
                         Bienvenido al Catálogo
                     </h2>
                     <p>
-                        El catálogo Descubre es la forma más fácil y exhaustiva de conocer todos los documentos 
-                        que posee la Biblioteca Nacional de Chile. Desde su buscador principal, se puede acceder 
-                        a la totalidad de la colección bibliográfica (objetos físicos como libros, revistas, 
-                        periódicos, fotografías, artículos, etc.), a la colección digital (con objetos 
-                        digitalizados o bien nacidos en este formato), así como a los minisitios del portal 
-                        Memoria Chilena. Si ya tiene una cuenta de usuario para solicitar material en nuestros 
-                        salones o quiere crear una, podrá utilizarla aquí para guardar sus búsquedas y ordenarlas 
-                        en carpetas personalizadas, activar alertas, etiquetar, comentar y compartir sus 
-                        resultados, entre otras funcionalidades.
+                        En esta sección encontrará todos los documentos en posesión de la Biblioteca de 
+                        Estación Central de Chile. A través de su buscador principal, se puede acceder a la 
+                        totalidad de la colección bibliográfica virtual disponible, que incluyen libros, revistas, 
+                        documentos técnicos, artículos, etc. Utilice el sistema de búsqueda avanzada para combinar 
+                        diversos criterios para precisar su consulta. Si posee una cuenta de usuario, también 
+                        puede solicitar material, lo que le permitirá acceder a contenido digital desde la 
+                        comodidad de su hogar.
                     </p>
                 </div>
                 <div className='parrafos2'>
-                    <h2 className="hero-title">
-                        Bienvenido al Catálogo
+                    <h2 className="catalogo-title">
+                        Programas y Proyectos
                     </h2>
-                    <p>
-                        El catálogo Descubre es la forma más fácil y exhaustiva de conocer todos los documentos 
-                        que posee la Biblioteca Nacional de Chile. Desde su buscador principal, se puede acceder 
-                        a la totalidad de la colección bibliográfica (objetos físicos como libros, revistas, 
-                        periódicos, fotografías, artículos, etc.), a la colección digital (con objetos 
-                        digitalizados o bien nacidos en este formato), así como a los minisitios del portal 
-                        Memoria Chilena. Si ya tiene una cuenta de usuario para solicitar material en nuestros 
-                        salones o quiere crear una, podrá utilizarla aquí para guardar sus búsquedas y ordenarlas 
-                        en carpetas personalizadas, activar alertas, etiquetar, comentar y compartir sus 
-                        resultados, entre otras funcionalidades.
-                    </p>
+                    <ul>
+                        <li>Aula Virtual</li>
+                        <li>Contenidos Locales</li>
+                        <li>Jóvenes Programadores</li>
+                        <li>Portal Estudios</li>
+                    </ul>
                 </div>
             </div>
         </div>

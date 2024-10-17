@@ -82,14 +82,21 @@
     color: #2c2c3e7a;
 }
 
+.catalogo-title {
+    font-size: 22px;
+    text-align: justify;
+    margin-bottom: 35px;
+    max-width: 600px;
+    line-height: 1.5;
+    color: #e5e5f1;
+  }
+
 .parrafos {
     background-color: #2c2c3e7a;
     border: 2px solid #4E4E6B;
     font-size: 18px;
     text-align: center;
     padding: 50px;
-    /*margin-bottom: 40px;*/
-    /*max-width: 600px;*/
     line-height: 1.5;
     color: #D1D1E9;
 }
@@ -100,8 +107,6 @@
     font-size: 18px;
     text-align: center;
     padding: 50px;
-    /*margin-bottom: 40px;*/
-    /*max-width: 600px;*/
     line-height: 1.5;
     color: #D1D1E9;
 }
@@ -109,10 +114,15 @@
 .contenedor-parrafos-catalogo {
     display: flex;
     /*justify-content: space-between; Opcional, ajusta el espacio entre los divs */
-    gap: 100px;
-    width: 80%;
+    width: 70%;
+    gap: 15px;
 }
 
 .contenedor-parrafos-catalogo p{
     text-align: justify;
+}
+
+.contenedor-parrafos-catalogo ul{
+    text-align: justify;
+    list-style-type: disc;
 }
