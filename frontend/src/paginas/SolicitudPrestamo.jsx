@@ -2,10 +2,11 @@ import { useForm } from 'react-hook-form';
 import '../estilos/estilillo.css';
 import imagenRegistro from '../assets/logo.png';
 import { Link } from 'react-router-dom';
+import imagenPrestamo from '../assets/prestamo.png';
 
 function SolicitudPrestamo({ setPrestamos }) {
     // Usa useForm para manejar el registro y el manejo del formulario
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, formState: { errors }} = useForm();
 
     // Función que se ejecuta cuando el formulario se manda
     const onSubmit = (data) => {
@@ -57,28 +58,33 @@ function SolicitudPrestamo({ setPrestamos }) {
                 <Link to="/login" className="nav-link">Iniciar sesión</Link>
                 <Link to="/registro" className="nav-link">Registro</Link>
             </nav>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <img src={imagenPrestamo} alt="Imagen Préstamo" className="imagen-prestamo" />
+            <form className="form-wrapper"onSubmit={handleSubmit(onSubmit)}>
+                <h2 className="registro-titulo">Solicitudes</h2>
                 {/*Campo de texto para el nombre del documento */}
-                <input
-                    type="text"
-                    {...register("documento", { required: true })} // Registra el campo "documento"
-                    className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
-                    placeholder='Nombre del documento'
-                />
-
+                <div className="campo">
+                    <input
+                        type="text"
+                        {...register("documento", { required: true })} // Registra el campo "documento"
+                        className={`input ${errors.documento ? 'input-error' : ''}`}
+                        placeholder='Nombre del documento*'
+                    />
+                </div>
+                <div className="campo">
                 {/* Menú desplegable para seleccionar el tipo de documento */}
-                <select
-                    {...register("tipo", { required: true })} // Registra el campo "tipo"
-                    className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
-                >
-                    <option value="libro">Libro</option>
-                    <option value="revista">Revista</option>{/* estas son las opciones que se permiten  */}
-                    <option value="articuloDigital">Artículo Digital</option>
-                </select>
+                    <select
+                        {...register("tipo", { required: true })} // Registra el campo "tipo"
+                        className={`input ${errors.tipo ? 'input-error' : ''}`}
+                    >
+                        <option value="libro">Libro</option>
+                        <option value="revista">Revista</option>{/* estas son las opciones que se permiten  */}
+                        <option value="articuloDigital">Artículo Digital</option>
+                    </select>
+                </div>
 
                 {/* Botón para enviar el formulario */}
-                <button type="submit" className='text-white'>
-                    Agregar Préstamo
+                <button type="submit" className='boton-registrar'>
+                    Pedir Préstamo
                 </button>
             </form>
             {/* Footer con dirección y horario */}

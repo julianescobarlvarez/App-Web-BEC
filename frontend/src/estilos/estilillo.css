@@ -322,3 +322,10 @@ footer p {
   width: 100px;
   margin-bottom: 20px;
 }
+
+/* Imagen debajo del header */
+.imagen-prestamo {
+  margin-top: 125px;
+  width: 125px;
+  margin-bottom: 20px;
+}

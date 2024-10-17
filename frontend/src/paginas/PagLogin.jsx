@@ -41,7 +41,7 @@ function PagLogin() {
                 <Link to="/login" className="nav-link">Iniciar sesión</Link>
                 <Link to="/registro" className="nav-link">Registro</Link>
             </nav>
-            <img src={imagenLogIn} alt="Crear cuenta" className="imagen-login" />
+            <img src={imagenLogIn} alt="Imagen Login" className="imagen-login" />
             <form className="form-wrapper"onSubmit={handleSubmit(onSubmit)}> {/* Maneja el envío del formulario */}
                 <h2 className="registro-titulo">Inicio de sesión</h2>
                 <div className="campo">
@@ -49,7 +49,7 @@ function PagLogin() {
                     type="text" 
                     {...register("userId", {required: "El ID de usuario es requerido"})} // Campo de ID de usuario
                     className={`input ${errors.userId ? 'input-error' : ''}`}
-                    placeholder='ID de Usuario'
+                    placeholder='ID de Usuario*'
                 />
                 {errors.userId && <p className="text-red-500 text-xs mt-1">{errors.userId.message}</p>} {/* Mensaje de error */}
                 </div>
@@ -61,7 +61,7 @@ function PagLogin() {
                         minLength: { value: 6, message: "La contraseña debe tener al menos 6 caracteres" }
                     })}
                     className={`input ${errors.password ? 'input-error' : ''}`}
-                    placeholder='Contraseña'
+                    placeholder='Contraseña*'
                 />
                 </div>
                 {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>} {/* Mensaje de error */}

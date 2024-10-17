@@ -55,7 +55,7 @@ function PagRegistro() {
               type="text"
               {...register('nombres', { required: 'Los nombres son obligatorios' })}
               className={`input ${errors.nombres ? 'input-error' : ''}`}
-              placeholder="Nombres"
+              placeholder="Nombre(s)*"
             />
             {errors.nombres && (
               <p className="mensaje-error">{errors.nombres.message}</p>
@@ -68,7 +68,7 @@ function PagRegistro() {
               type="text"
               {...register('apellidos', { required: 'Los apellidos son obligatorios' })}
               className={`input ${errors.apellidos ? 'input-error' : ''}`}
-              placeholder="Apellidos"
+              placeholder="Apellidos*"
             />
             {errors.apellidos && (
               <p className="mensaje-error">{errors.apellidos.message}</p>
@@ -81,7 +81,7 @@ function PagRegistro() {
               type="text"
               {...register('rut', { required: 'El RUT es obligatorio' })}
               className={`input ${errors.rut ? 'input-error' : ''}`}
-              placeholder="RUT"
+              placeholder="RUT*"
             />
             {errors.rut && (
               <p className="mensaje-error">{errors.rut.message}</p>
@@ -94,7 +94,7 @@ function PagRegistro() {
               type="tel"
               {...register('telefono', { required: 'El teléfono es obligatorio' })}
               className={`input ${errors.telefono ? 'input-error' : ''}`}
-              placeholder="Teléfono"
+              placeholder="Teléfono*"
             />
             {errors.telefono && (
               <p className="mensaje-error">{errors.telefono.message}</p>
@@ -107,7 +107,7 @@ function PagRegistro() {
               type="text"
               {...register('direccion', { required: 'La dirección es obligatoria' })}
               className={`input ${errors.direccion ? 'input-error' : ''}`}
-              placeholder="Dirección"
+              placeholder="Dirección*"
             />
             {errors.direccion && (
               <p className="mensaje-error">{errors.direccion.message}</p>
