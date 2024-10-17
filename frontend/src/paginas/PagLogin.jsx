@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom' // Importa useNavigate para redir
 import imagenRegistro from '../assets/logo.png';
 import '../estilos/estilillo.css';
 import { Link } from 'react-router-dom';
+import imagenLogIn from '../assets/login.png';
 
 function PagLogin() {
     const { register, handleSubmit, formState: { errors } } = useForm() // Inicializa el formulario
@@ -40,31 +41,35 @@ function PagLogin() {
                 <Link to="/login" className="nav-link">Iniciar sesión</Link>
                 <Link to="/registro" className="nav-link">Registro</Link>
             </nav>
-            <h2 className="text-2xl font-bold text-white mb-4">Sistema de Préstamo y Devolución</h2>
-            <form onSubmit={handleSubmit(onSubmit)}> {/* Maneja el envío del formulario */}
+            <img src={imagenLogIn} alt="Crear cuenta" className="imagen-login" />
+            <form className="form-wrapper"onSubmit={handleSubmit(onSubmit)}> {/* Maneja el envío del formulario */}
+                <h2 className="registro-titulo">Inicio de sesión</h2>
+                <div className="campo">
                 <input 
                     type="text" 
                     {...register("userId", {required: "El ID de usuario es requerido"})} // Campo de ID de usuario
-                    className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2' 
+                    className={`input ${errors.userId ? 'input-error' : ''}`}
                     placeholder='ID de Usuario'
                 />
                 {errors.userId && <p className="text-red-500 text-xs mt-1">{errors.userId.message}</p>} {/* Mensaje de error */}
-
+                </div>
+                <div className="campo">
                 <input 
                     type="password" 
                     {...register("password", {
                         required: "La contraseña es requerida", // Campo de contraseña
                         minLength: { value: 6, message: "La contraseña debe tener al menos 6 caracteres" }
                     })}
-                    className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2' 
+                    className={`input ${errors.password ? 'input-error' : ''}`}
                     placeholder='Contraseña'
                 />
+                </div>
                 {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>} {/* Mensaje de error */}
 
                 {authError && <p className="text-red-500 text-xs mt-1">{authError}</p>} {/* Mensaje de error de autenticación */}
 
-                <button className='bg-indigo-600 text-white px-4 py-2 rounded-md my-2 w-full hover:bg-indigo-700'>
-                    Iniciar Sesión
+                <button className='boton-registrar'>
+                    Ingresar
                 </button>
             </form>
             {/* Footer con dirección y horario */}

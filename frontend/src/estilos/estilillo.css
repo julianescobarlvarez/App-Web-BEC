@@ -55,15 +55,15 @@
 
 /* Imagen debajo del header */
 .imagen-crear-cuenta {
-  margin-top: 30px; /* Espacio debajo del header */
-  width: 100px; /* Ajusta el tamaño de la imagen */
+  margin-top: 30px;
+  width: 100px;
   margin-bottom: 20px;
 }
 
 /* Imagen debajo del header */
 .imagen-principal-catalogo {
   margin-top: 230px;
-  width: 100px; /* Ajusta el tamaño de la imagen */
+  width: 100px;
   margin-bottom: 20px;
 }
 
@@ -314,4 +314,11 @@ footer p {
   border-bottom: 2px solid #1C1C2E;
   margin-bottom: 40px;
   border-radius: 15px;
+}
+
+/* Imagen debajo del header */
+.imagen-login {
+  margin-top: 120px;
+  width: 100px;
+  margin-bottom: 20px;
 }
