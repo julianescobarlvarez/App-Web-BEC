@@ -10,42 +10,20 @@ import { Link } from 'react-router-dom';
 function PagCatalogo(){
     //Funciones del UseForm y UseState
     const {register, handleSubmit} = useForm();
-    const [isVisible, setIsVisible] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState(null);
-    const options = [
-        'Cualquier recurso',
-        'Artículos', 
-        'Documentos técnicos', 
-        'Documentales', 
-        'Libros', 
-        'Relatos',
-        'Recursos de audio'
-    ];
+    const [esVisible, setEsVisible] = useState(false);
 
     //Función para la visibilidad del filtro
-    const toggleDiv = () => {
-        setIsVisible(!isVisible);
+    const alternarDiv = () => {
+        setEsVisible(!esVisible);
     };
  
-    //Función para la visibilidad de las opciones
-    const toggleDropdown = () => {
-        setIsOpen(!isOpen);
-    };
-  
-    //
-    const handleOptionClick = (option) => {
-        setSelectedOption(option);
-        setIsOpen(false);
-    };
-
     //Función para captar los datos ingresados por el usuario y utilizarlos posteriormente
     const onSubmit = (data) => {
         console.log(data.documento);
     };
     
     return(
-        <div className="registro-container" style={{ position: isOpen ? 'fixed' : 'static'}}>
+        <div className="registro-container">
             {/* Encabezado */}
             <header className="header">
                 <div className="header-content">
@@ -83,46 +61,11 @@ function PagCatalogo(){
                         </button>
                     </div>
                     <div className='filtro-busqueda'>
-                        <button type="submit" onClick={toggleDiv}>
-                            Filtro {isVisible ? 'simple' : 'avanzado'}
+                        <button type="submit" onClick={alternarDiv}>
+                            Filtro {esVisible ? 'simple' : 'avanzado'}
                         </button>
                     </div>
-                    <div className='filtro-oculto' style={{ display: isVisible ? 'flex' : 'none'}}>
-                        <p>Tipo de recurso: </p>
-                        <button onClick={toggleDropdown} className="dropdown-button">
-                            {selectedOption || 'Selecciona una opción'}
-                        </button>
-                        {isOpen && (
-                            <div className="dropdown-list-container">
-                                <ul className="dropdown-list">
-                                    {options.map((option) => (
-                                        <li key={option} onClick={() => handleOptionClick(option)} className="dropdown-item">
-                                            {option}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
-
-
-                        <p>Idioma: </p>
-                        <button onClick={toggleDropdown} className="dropdown-button">
-                            {selectedOption || 'Selecciona una opción'}
-                        </button>
-                        {isOpen && (
-                            <div className="dropdown-list-container">
-                                <ul className="dropdown-list">
-                                    {options.map((option) => (
-                                        <li key={option} onClick={() => handleOptionClick(option)} className="dropdown-item">
-                                            {option}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
-
-                        
-                        {/*
+                    <div className={`filtro-oculto ${esVisible ? 'show' : 'hide'}`}>
                         <p>Tipo de recurso: </p>
                         <select {...register('recursoSeleccionado')} defaultValue="">
                             <option value="">Todos los recursos</option>
@@ -144,72 +87,42 @@ function PagCatalogo(){
                             type="date"
                             {...register('selectedDate')} // Aquí puedes agregar validaciones si lo deseas
                         />
-                        */}
                     </div>
                 </form>
             </div>
-            <div>
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
-                Otras cuadritos para información, y posteriormente, mostrar los recursos
+            <div className='contenedor-parrafos-catalogo'>
+                <div className='parrafos'>
+                    <h2 className="hero-title">
+                        Bienvenido al Catálogo
+                    </h2>
+                    <p>
+                        El catálogo Descubre es la forma más fácil y exhaustiva de conocer todos los documentos 
+                        que posee la Biblioteca Nacional de Chile. Desde su buscador principal, se puede acceder 
+                        a la totalidad de la colección bibliográfica (objetos físicos como libros, revistas, 
+                        periódicos, fotografías, artículos, etc.), a la colección digital (con objetos 
+                        digitalizados o bien nacidos en este formato), así como a los minisitios del portal 
+                        Memoria Chilena. Si ya tiene una cuenta de usuario para solicitar material en nuestros 
+                        salones o quiere crear una, podrá utilizarla aquí para guardar sus búsquedas y ordenarlas 
+                        en carpetas personalizadas, activar alertas, etiquetar, comentar y compartir sus 
+                        resultados, entre otras funcionalidades.
+                    </p>
+                </div>
+                <div className='parrafos2'>
+                    <h2 className="hero-title">
+                        Bienvenido al Catálogo
+                    </h2>
+                    <p>
+                        El catálogo Descubre es la forma más fácil y exhaustiva de conocer todos los documentos 
+                        que posee la Biblioteca Nacional de Chile. Desde su buscador principal, se puede acceder 
+                        a la totalidad de la colección bibliográfica (objetos físicos como libros, revistas, 
+                        periódicos, fotografías, artículos, etc.), a la colección digital (con objetos 
+                        digitalizados o bien nacidos en este formato), así como a los minisitios del portal 
+                        Memoria Chilena. Si ya tiene una cuenta de usuario para solicitar material en nuestros 
+                        salones o quiere crear una, podrá utilizarla aquí para guardar sus búsquedas y ordenarlas 
+                        en carpetas personalizadas, activar alertas, etiquetar, comentar y compartir sus 
+                        resultados, entre otras funcionalidades.
+                    </p>
+                </div>
             </div>
         </div>
     );

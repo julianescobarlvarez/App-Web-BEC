@@ -50,14 +50,18 @@
 }
 
 .filtro-oculto {
-    /*margin-top: 25px;*/
-    align-items: center;
-    gap:61px;
+    background-color: #2c2c3e7a;
+    border: 2px solid #4E4E6B;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 30px;
+    overflow: hidden;
 }
 
 .filtro-oculto select{
     color: black;
     border-radius: 5px;
+    margin-bottom: 15px;
 }
 
 .filtro-oculto input{
@@ -65,43 +69,50 @@
     border-radius: 5px;
 }
 
+.filtro-oculto.show {
+    opacity: 1;
+    height: auto; /* Asegúrate de que el contenido se ajuste */
+    transition: opacity 0.3s ease;
+}
+  
+.filtro-oculto.hide {
+    opacity: 0;
+    height: 0;
+    transition: opacity 0.3s ease;
+    color: #2c2c3e7a;
+}
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-button {
-    padding: 10px;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    width: 213px;
-    text-align: start;
-  }
-  
-  .dropdown-list-container {
-    max-height: 175px; /* Ajusta el alto según sea necesario */
-    overflow-y: auto; /* Habilita el desplazamiento vertical */
-    position: absolute;
-    background-color: white;
-    color: black;
-    border: 1px solid #ccc;
-    z-index: 1;
-    margin-top: 129px;
-    margin-left: 187px;
-  }
-  
-  .dropdown-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .dropdown-item {
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  .dropdown-item:hover {
-    background-color: #f0f0f0;
-  }
+.parrafos {
+    background-color: #2c2c3e7a;
+    border: 2px solid #4E4E6B;
+    font-size: 18px;
+    text-align: center;
+    padding: 50px;
+    /*margin-bottom: 40px;*/
+    /*max-width: 600px;*/
+    line-height: 1.5;
+    color: #D1D1E9;
+}
+
+.parrafos2 {
+    background-color: #2c2c3e7a;
+    border: 2px solid #4E4E6B;
+    font-size: 18px;
+    text-align: center;
+    padding: 50px;
+    /*margin-bottom: 40px;*/
+    /*max-width: 600px;*/
+    line-height: 1.5;
+    color: #D1D1E9;
+}
+
+.contenedor-parrafos-catalogo {
+    display: flex;
+    /*justify-content: space-between; Opcional, ajusta el espacio entre los divs */
+    gap: 100px;
+    width: 80%;
+}
+
+.contenedor-parrafos-catalogo p{
+    text-align: justify;
+}
