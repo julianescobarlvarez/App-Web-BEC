@@ -114,6 +114,33 @@ function PagRegistro() {
             )}
           </div>
 
+          {/* Campo User ID */}
+          <div className="campo">
+            <input
+              type="text"
+              {...register('ID', { required: 'El ID es obligatorio' })}
+              className={`input ${errors.ID ? 'input-error' : ''}`}
+              placeholder="ID de usuario*"
+            />
+            {errors.rut && (
+              <p className="mensaje-error">{errors.rut.message}</p>
+            )}
+          </div>
+
+
+          {/* Campo contraseña */}
+          <div className="campo">
+            <input
+              type="text"
+              {...register('password', { required: 'La contraseña es obligatoria' })}
+              className={`input ${errors.password ? 'input-error' : ''}`}
+              placeholder="Contraseña*"
+            />
+            {errors.rut && (
+              <p className="mensaje-error">{errors.rut.message}</p>
+            )}
+          </div>
+
           {/* Subir Foto de Perfil */}
           <div className="campo">
             <label htmlFor="fotoPerfil" className="label-foto-perfil">Foto de perfil</label>
