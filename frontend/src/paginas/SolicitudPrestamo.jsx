@@ -1,5 +1,7 @@
 import { useForm } from 'react-hook-form';
 import '../estilos/estilillo.css';
+import imagenRegistro from '../assets/logo.png';
+import { Link } from 'react-router-dom';
 
 function SolicitudPrestamo({ setPrestamos }) {
     // Usa useForm para manejar el registro y el manejo del formulario
@@ -37,6 +39,24 @@ function SolicitudPrestamo({ setPrestamos }) {
 
     return (
         <div className='registro-container'>
+            {/* Encabezado */}
+            <header className="header">
+                <div className="header-content">
+                <img src={imagenRegistro} alt="Logo de registro" className="logo" />
+                <h1>
+                    <span className="titulo-bec">BEC</span>
+                    <span className="titulo-biblioteca">Biblioteca Estación Central</span>
+                </h1>
+                </div>
+            </header>
+            {/* Navegación */}
+            <nav className="nav-prestamo">
+                <Link to="/" className="nav-link">Acerca de</Link>
+                <Link to="/catalogo" className="nav-link">Catálogo</Link>
+                <Link to="/prestamo" className="nav-link">Préstamo</Link>
+                <Link to="/login" className="nav-link">Iniciar sesión</Link>
+                <Link to="/registro" className="nav-link">Registro</Link>
+            </nav>
             <form onSubmit={handleSubmit(onSubmit)}>
                 {/*Campo de texto para el nombre del documento */}
                 <input
@@ -61,6 +81,10 @@ function SolicitudPrestamo({ setPrestamos }) {
                     Agregar Préstamo
                 </button>
             </form>
+            {/* Footer con dirección y horario */}
+            <footer className="footer">
+                <p>Dirección: Av. Libertador Bernardo O'Higgins 1234, Estación Central, Santiago, Chile. Horario: Lunes a Viernes, 9:00 - 18:00 hrs</p>
+            </footer>
         </div>
     );
 }

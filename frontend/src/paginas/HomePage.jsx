@@ -17,7 +17,7 @@ function Homepage() {
       </header>
 
       {/* Navegación */}
-      <nav className="nav">
+      <nav className="nav-prestamo">
         <Link to="/" className="nav-link">Acerca de</Link>
         <Link to="/catalogo" className="nav-link">Catálogo</Link>
         <Link to="/prestamo" className="nav-link">Préstamo</Link>

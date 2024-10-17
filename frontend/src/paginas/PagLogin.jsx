@@ -1,7 +1,9 @@
 import React, { useState } from 'react' // Importa React y el hook useState
 import { useForm } from 'react-hook-form' // Importa useForm para manejar el formulario
 import { useNavigate } from 'react-router-dom' // Importa useNavigate para redirigir entre rutas
+import imagenRegistro from '../assets/logo.png';
 import '../estilos/estilillo.css';
+import { Link } from 'react-router-dom';
 
 function PagLogin() {
     const { register, handleSubmit, formState: { errors } } = useForm() // Inicializa el formulario
@@ -20,6 +22,24 @@ function PagLogin() {
 
     return (
         <div className='registro-container'>
+            {/* Encabezado */}
+            <header className="header">
+                <div className="header-content">
+                <img src={imagenRegistro} alt="Logo de registro" className="logo" />
+                <h1>
+                    <span className="titulo-bec">BEC</span>
+                    <span className="titulo-biblioteca">Biblioteca Estación Central</span>
+                </h1>
+                </div>
+            </header>
+            {/* Navegación */}
+            <nav className="nav-prestamo">
+                <Link to="/" className="nav-link">Acerca de</Link>
+                <Link to="/catalogo" className="nav-link">Catálogo</Link>
+                <Link to="/prestamo" className="nav-link">Préstamo</Link>
+                <Link to="/login" className="nav-link">Iniciar sesión</Link>
+                <Link to="/registro" className="nav-link">Registro</Link>
+            </nav>
             <h2 className="text-2xl font-bold text-white mb-4">Sistema de Préstamo y Devolución</h2>
             <form onSubmit={handleSubmit(onSubmit)}> {/* Maneja el envío del formulario */}
                 <input 
@@ -47,6 +67,10 @@ function PagLogin() {
                     Iniciar Sesión
                 </button>
             </form>
+            {/* Footer con dirección y horario */}
+            <footer className="footer">
+                <p>Dirección: Av. Libertador Bernardo O'Higgins 1234, Estación Central, Santiago, Chile. Horario: Lunes a Viernes, 9:00 - 18:00 hrs</p>
+            </footer>
         </div>
     )
 }
