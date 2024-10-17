@@ -132,6 +132,10 @@ function PagRegistro() {
           </button>
         </form>
       </div>
+        {/* Footer con dirección y horario */}
+        <footer className="footer-registro">
+          <p>Dirección: Av. Libertador Bernardo O'Higgins 1234, Estación Central, Santiago, Chile. Horario: Lunes a Viernes, 9:00 - 18:00 hrs</p>
+        </footer>
     </div>
   );
 }
