@@ -21,8 +21,12 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
+    contraseña: {
+        type: String,
+        required: true,
+    },
     foto: {
-        type: Boolean,
+        type: String, // url de la imagen
         required: true
     },
 }, {
