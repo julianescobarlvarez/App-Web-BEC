@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
     },
     foto: {
         type: String, // url de la imagen
-        required: true
+        required: false
     },
 }, {
     timestamps: true
