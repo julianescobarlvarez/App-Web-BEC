@@ -3,6 +3,7 @@ import '../estilos/estilillo.css';
 import imagenRegistro from '../assets/logo.png';
 import imagenCrearCuenta from '../assets/crear_cuenta.png';
 import { Link } from 'react-router-dom';
+import { registerRequest } from '../api/auth';
 
 function PagRegistro() {
   const {
