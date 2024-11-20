@@ -2,44 +2,53 @@
  
  
  export const getDocuments = async (req, res)=> {
-    const document = await Document.find({
-        user: req.user.id
-    });
+    const documents = await Document.find();
 
-    res.json(document);
+    res.json(documents);
 
 };
  export const createDocument = async (req, res)=> {
-      const {title, description, date } = req.body
+      const {
+        identificador,
+        tipo,
+        titulo,
+        autor,
+        editorial,
+        año,
+        edicion,
+        categoria,
+        tipoMedio } = req.body;
 
-      console.log(req.user)
-
-      const newDocument= new Document(
+      const newDocument = new Document(
       {
-        title,
-        description,
-        date,
-        user: req.user.id
-
-
+        identificador,
+        tipo,
+        titulo,
+        autor,
+        editorial,
+        año,
+        edicion,
+        categoria,
+        tipoMedio
       })
-      const saveDocument = await newDocument.save();
+      const savedDocument = await newDocument.save();
       res.json(savedDocument);
     };
-export const getDocument = async (req, res)=> {;
- const Document =await Document.findById(req.params.id)
- if (!document) return res.status(404).json({message: "document not found"})
- res.json(document)
+export const getDocument = async (req, res)=> {
+  const document = await Document.findOne({identificador: req.params.id});
+  if (!document) return res.status(404).json({message: "No se pudo encontrar el documento"});
+  res.json(document);
 };
 export const UpdateDocument = async (req, res)=> {
-        const Document =await Document.findById(req.params.id, req.body)
-    if (!document) return res.status(404).json({message: "document not found"})
-    res.json(document)
-   };
+  const document = await Document.findOneAndUpdate({identificador: req.params.id}, req.body, {
+    new: true
+  });
+  if (!document) return res.status(404).json({message: "No se pudo encontrar el documento"});
+  res.json(document);
+};
 
  export const DeleteDocument = async (req, res)=> {
- const Document =await Document.findById(req.params.id)
- if (!document) return res.status(404).json({message: "document not found"});
- return res.sendStatus(204);
-
+  const document = await Document.findOneAndDelete({identificador: req.params.id});
+  if (!document) return res.status(404).json({message: "No se pudo encontrar el documento"});
+  return res.sendStatus(204);
 };

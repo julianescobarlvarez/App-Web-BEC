@@ -6,13 +6,13 @@ import {
     createDocument,
     UpdateDocument,
     DeleteDocument,
-}  from "..controllers/document.controller.js";
+}  from "../controllers/document.controller.js";
 
 const router= Router();
 
-router.get("/document", authRequired, getDocuments);
-router.get("/document/:id", authRequired, getDocument);
-router.post("/document", authRequired, createDocument);
-router.delete("/document", authRequired, DeleteDocument);
-router.put("/document", authRequired, UpdateDocument);
+router.get("/documents", authRequired, getDocuments);
+router.get("/documents/:id", authRequired, getDocument);
+router.post("/documents", authRequired, createDocument);
+router.delete("/documents/:id", authRequired, DeleteDocument);
+router.put("/documents/:id", authRequired, UpdateDocument);
 export default router;
