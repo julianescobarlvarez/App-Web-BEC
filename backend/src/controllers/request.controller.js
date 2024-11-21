@@ -5,8 +5,7 @@ import User from "../models/user.model.js";
 // Crear un préstamo
 export const crearPrestamo = async (req, res) => {
   try {
-
-    const userId = req.user.id;
+    const usuarioId = req.user.id;
     const { identificador, fechaVencimiento } = req.body;
 
 
@@ -17,7 +16,7 @@ export const crearPrestamo = async (req, res) => {
 
 
     const nuevoPrestamo = new Request({
-      userId,
+      usuarioId,
       documentoId: documento._id, // relacionar el 'identificador' con el id real
       fechaVencimiento,
     });
@@ -32,10 +31,10 @@ export const crearPrestamo = async (req, res) => {
 // para un usuario normal
 export const obtenerPrestamosUsuario = async (req, res) => {
   try {
-    const userId = req.user.id;
+    const usuarioId = req.user.id;
 
 
-    const prestamos = await Request.find({ userId })
+    const prestamos = await Request.find({ usuarioId })
       .populate("documentoId", "titulo identificador tipo")
       .select("documentoId fechaSolicitud fechaVencimiento estado");
 
