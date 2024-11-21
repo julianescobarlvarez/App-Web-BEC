@@ -34,11 +34,34 @@
       const savedDocument = await newDocument.save();
       res.json(savedDocument);
     };
+
+
 export const getDocument = async (req, res)=> {
   const document = await Document.findOne({identificador: req.params.id});
   if (!document) return res.status(404).json({message: "No se pudo encontrar el documento"});
   res.json(document);
 };
+
+export const getDocumentByName = async (req, res)=> {
+  const document = await Document.find({titulo: req.params.id});
+  if (!document) return res.status(404).json({message: "No se pudo encontrar el documento"});
+  res.json(document);
+};
+
+export const getDocumentByAuthor = async (req, res)=> {
+  const document = await Document.find({autor: req.params.id});
+  if (!document) return res.status(404).json({message: "No se pudo encontrar el documento"});
+  res.json(document);
+};
+
+export const getDocumentByCategory = async (req, res)=> {
+  const document = await Document.find({categoria: req.params.id});
+  if (!document) return res.status(404).json({message: "No se pudo encontrar el documento"});
+  res.json(document);
+};
+
+
+
 export const UpdateDocument = async (req, res)=> {
   const document = await Document.findOneAndUpdate({identificador: req.params.id}, req.body, {
     new: true

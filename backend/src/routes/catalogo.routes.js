@@ -2,6 +2,9 @@ import {Router} from 'express'
 import { authRequired } from '../middlewares/validateToken.js';
 import {
     getDocument,
+    getDocumentByAuthor,
+    getDocumentByCategory,
+    getDocumentByName,
     getDocuments,
     createDocument,
     UpdateDocument,
@@ -14,6 +17,9 @@ const router= Router();
 
 router.get("/documents", authRequired, getDocuments);
 router.get("/documents/:id", authRequired, getDocument);
+router.get("/documents/autor/:autor", authRequired, getDocumentByAuthor);
+router.get("/documents/nombre/:nombre", authRequired, getDocumentByName);
+router.get("/documents/categoria/:categoria", authRequired, getDocumentByCategory);
 router.post("/documents", authRequired, validateSchema(createDocumentSchema), createDocument);
 router.delete("/documents/:id", authRequired, DeleteDocument);
 router.put("/documents/:id", authRequired, UpdateDocument);
