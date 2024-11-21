@@ -1,4 +1,4 @@
-import Prestamo from "../models/prestamo.model.js";
+import Request from "../models/request.model.js";
 import Documento from "../models/document.model.js";
 import User from "../models/user.model.js";
 
@@ -16,7 +16,7 @@ export const crearPrestamo = async (req, res) => {
     }
 
 
-    const nuevoPrestamo = new Prestamo({
+    const nuevoPrestamo = new Request({
       userId,
       documentoId: documento._id, // relacionar el 'identificador' con el id real
       fechaVencimiento,
@@ -35,7 +35,7 @@ export const obtenerPrestamosUsuario = async (req, res) => {
     const userId = req.user.id;
 
 
-    const prestamos = await Prestamo.find({ userId })
+    const prestamos = await Request.find({ userId })
       .populate("documentoId", "titulo identificador tipo")
       .select("documentoId fechaSolicitud fechaVencimiento estado");
 
@@ -52,7 +52,7 @@ export const obtenerPrestamosUsuario = async (req, res) => {
 // para el administrador
 export const obtenerPrestamos = async (req, res) => {
   try {
-    const prestamos = await Prestamo.find()
+    const prestamos = await Request.find()
       .populate("usuarioId", "nombres apellidos email") // obtener datos del usuario
       .populate("documentoId", "identificador titulo tipo"); // obtener datos del documento
 
@@ -75,7 +75,7 @@ export const actualizarEstadoPrestamo = async (req, res) => {
     }
 
 
-    const prestamo = await Prestamo.findOneAndUpdate(
+    const prestamo = await Request.findOneAndUpdate(
       { documentoId: documento._id }, // condición: préstamo con ese documento
       { estado },
       { new: true }

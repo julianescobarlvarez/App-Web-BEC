@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const updatePrestamoSchema = z.object({
+export const updateRequestSchema = z.object({
     params: z.object({
         identificador: z.string({
             required_error: 'El identificador del documento es requerido',

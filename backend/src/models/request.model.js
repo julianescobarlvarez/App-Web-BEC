@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const prestamoSchema = new mongoose.Schema({
+const requestSchema = new mongoose.Schema({
   usuarioId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
