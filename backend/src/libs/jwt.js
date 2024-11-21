@@ -1,7 +1,7 @@
-import {TOKEN_SECRET} from '../config.js';
+import { TOKEN_SECRET } from '../config.js';
 import jwt from 'jsonwebtoken';
 
-export function createAcessToken(payload){
+export function createAcessToken(payload) {
     return new Promise((resolve, reject) => {
         jwt.sign(
             payload,

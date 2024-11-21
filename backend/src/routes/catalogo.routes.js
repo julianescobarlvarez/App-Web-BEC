@@ -1,4 +1,4 @@
-import {Router} from 'express'
+import { Router } from 'express'
 import { authRequired } from '../middlewares/validateToken.js';
 import {
     getDocument,
@@ -9,11 +9,11 @@ import {
     createDocument,
     UpdateDocument,
     DeleteDocument,
-}  from "../controllers/document.controller.js";
+} from "../controllers/document.controller.js";
 import { validateSchema } from '../middlewares/validator.middleware.js';
 import { createDocumentSchema } from '../schemas/document.schema.js';
 
-const router= Router();
+const router = Router();
 
 router.get("/documents", authRequired, getDocuments);
 router.get("/documents/:id", authRequired, getDocument);

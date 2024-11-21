@@ -1,4 +1,4 @@
-import {z} from 'zod';
+import { z } from 'zod';
 
 export const updatePrestamoSchema = z.object({
     params: z.object({
