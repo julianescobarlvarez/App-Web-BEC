@@ -1,6 +1,6 @@
 import Document from "../models/document.model.js"
 
-
+//Para consultar todos los documentos registrados
 export const getDocuments = async (req, res) => {
   const documents = await Document.find();
 
@@ -41,24 +41,28 @@ export const getDocument = async (req, res) => {
   res.json(document);
 };
 
+//Para consultar documentos por nombre
 export const getDocumentByName = async (req, res) => {
   const document = await Document.find({ titulo: req.params.nombre });
   if (!document) return res.status(404).json({ message: "No se pudo encontrar el documento" });
   res.json(document);
 };
 
+//Para consultar documentos por autor
 export const getDocumentByAuthor = async (req, res) => {
   const document = await Document.find({ autor: req.params.autor });
   if (!document) return res.status(404).json({ message: "No se pudo encontrar el documento" });
   res.json(document);
 };
 
+//Para consultar documentos por categoría
 export const getDocumentByCategory = async (req, res) => {
   const document = await Document.find({ categoria: req.params.categoria });
   if (!document) return res.status(404).json({ message: "No se pudo encontrar el documento" });
   res.json(document);
 };
 
+//Para actualizar la información de un documento ya registrado
 export const UpdateDocument = async (req, res) => {
   const document = await Document.findOneAndUpdate({ identificador: req.params.id }, req.body, {
     new: true
@@ -67,6 +71,7 @@ export const UpdateDocument = async (req, res) => {
   res.json(document);
 };
 
+//Para eliminar un documento ya registrado
 export const DeleteDocument = async (req, res) => {
   const document = await Document.findOneAndDelete({ identificador: req.params.id });
   if (!document) return res.status(404).json({ message: "No se pudo encontrar el documento" });
