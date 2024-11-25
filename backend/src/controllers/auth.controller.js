@@ -65,6 +65,7 @@ export const logout = (req, res) => {
     });
     return res.sendStatus(200);
 }
+//Sólo al estar logeado
 export const profile = async (req, res) => {
     const userFound = await User.findById(req.user.id);
 
@@ -76,6 +77,7 @@ export const profile = async (req, res) => {
         updatedAt: userFound.updatedAt
     });
 }
+//Sólo al estar logeado
 export const updateUser = async (req, res) => {
     const { nombres, apellidos, direccion, rut, telefono, foto } = req.body;
 

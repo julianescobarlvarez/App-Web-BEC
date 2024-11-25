@@ -35,7 +35,6 @@ export const createDocument = async (req, res) => {
   res.json(savedDocument);
 };
 
-
 export const getDocument = async (req, res) => {
   const document = await Document.findOne({ identificador: req.params.id });
   if (!document) return res.status(404).json({ message: "No se pudo encontrar el documento" });
@@ -59,8 +58,6 @@ export const getDocumentByCategory = async (req, res) => {
   if (!document) return res.status(404).json({ message: "No se pudo encontrar el documento" });
   res.json(document);
 };
-
-
 
 export const UpdateDocument = async (req, res) => {
   const document = await Document.findOneAndUpdate({ identificador: req.params.id }, req.body, {
