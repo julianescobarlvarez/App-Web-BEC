@@ -16,6 +16,10 @@ const userSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    rut: {
+        type: Number,
+        required: true
+    },
     email: {
         type: String,
         required: true,
@@ -29,6 +33,11 @@ const userSchema = new mongoose.Schema({
         type: String, // url de la imagen
         required: false
     },
+    rol: {
+        type: String,
+        default: "user", // Valor por defecto para usuarios existentes
+        enum: ["user", "admin"] // Asegura que solo tenga valores válidos
+    }
 }, {
     timestamps: true
 })

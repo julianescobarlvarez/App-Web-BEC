@@ -11,6 +11,7 @@ export const register = async (req, res) => {
             nombres,
             apellidos,
             direccion,
+            rut,
             telefono,
             email,
             contraseña: passwordHash,
@@ -75,3 +76,78 @@ export const profile = async (req, res) => {
         updatedAt: userFound.updatedAt
     });
 }
+export const updateUser = async (req, res) => {
+    const { nombres, apellidos, direccion, telefono, foto } = req.body;
+
+    try {
+        const userUpdated = await User.findByIdAndUpdate(
+            req.user.id,
+            {
+                nombres,
+                apellidos,
+                direccion,
+                rut,
+                telefono,
+                foto,
+            },
+            { new: true }
+        );
+
+        if (!userUpdated) return res.status(404).json({ message: "Usuario no encontrado" });
+
+        return res.json({
+            id: userUpdated._id,
+            nombres: userUpdated.nombres,
+            apellidos: userUpdated.apellidos,
+            direccion: userUpdated.direccion,
+            rut: userUpdated.rut,
+            telefono: userUpdated.telefono,
+            foto: userUpdated.foto,
+            updatedAt: userUpdated.updatedAt,
+        });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+//Sólo para administradores:
+export const updateUserRole = async (req, res) => {
+    const { id, role } = req.body;
+
+    if (!["user", "admin"].includes(role)) {
+        return res.status(400).json({ message: "Rol inválido." });
+    }
+
+    try {
+        const userUpdated = await User.findByIdAndUpdate(
+            id,
+            { role },
+            { new: true }
+        );
+
+        if (!userUpdated) return res.status(404).json({ message: "Usuario no encontrado." });
+
+        return res.json({
+            id: userUpdated._id,
+            nombres: userUpdated.nombres,
+            role: userUpdated.role,
+            updatedAt: userUpdated.updatedAt,
+        });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+//Sólo para administradores:
+export const deleteUser = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const userFound = await User.findById(id);
+        if (!userFound) return res.status(404).json({ message: "Usuario no encontrado" });
+
+        await User.findByIdAndDelete(id);
+
+        return res.json({ message: "Usuario eliminado exitosamente" });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};

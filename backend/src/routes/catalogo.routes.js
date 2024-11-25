@@ -22,5 +22,5 @@ router.get("/documents/autor/:autor", authRequired, getDocumentByAuthor);//Ruta 
 router.get("/documents/categoria/:categoria", authRequired, getDocumentByCategory);//Ruta para consultar un documento por categoria
 router.post("/documents", authRequired, validateSchema(createDocumentSchema), createDocument);//Ruta para agregar un documento
 router.delete("/documents/:id", authRequired, DeleteDocument);//Ruta para eliminar un documento
-router.put("/documents/:id", authRequired, UpdateDocument);//Ruta para actualizar un documento
+router.put("/documents/:id", authRequired, UpdateDocument);//Ruta para actualizar un documento (es necesario ingresar todos los campos)
 export default router;

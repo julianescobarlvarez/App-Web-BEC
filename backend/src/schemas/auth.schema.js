@@ -10,6 +10,9 @@ export const registerSchema = z.object({
     direccion: z.string({
         required_error: 'La dirección es obligatoria'
     }),
+    rut: z.number({
+        required_error: 'El rut es obligatorio'
+    }),
     telefono: z.number({
         required_error: 'El teléfono es obligatorio'
     }),

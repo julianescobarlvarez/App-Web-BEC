@@ -8,13 +8,14 @@ import {
 import { authRequired } from "../middlewares/validateToken.js";
 import { updateRequestSchema } from "../schemas/request.schema.js";
 import { validateSchema } from "../middlewares/validator.middleware.js";
+import { isAdmin } from "../middlewares/isAdmin.js";
 
 const router = express.Router();
 
 
-router.post("/prestamos", authRequired, crearPrestamo);
-router.get("/prestamos", authRequired, obtenerPrestamos);
-router.get("/prestamos/misPrestamos", authRequired, obtenerPrestamosUsuario);
-router.patch("/prestamos/:identificador", authRequired, validateSchema(updateRequestSchema), actualizarEstadoPrestamo);
+router.post("/prestamos", authRequired, crearPrestamo);//Ruta para solicitar préstamo
+router.get("/prestamos", isAdmin, obtenerPrestamos);//Ruta para ver los préstamos (admin)
+router.get("/prestamos/misPrestamos", authRequired, obtenerPrestamosUsuario);//Ruta para ver los préstamos (usuario)
+router.patch("/prestamos/:identificador", isAdmin, validateSchema(updateRequestSchema), actualizarEstadoPrestamo);//Ruta para actualizar préstamos (admin)
 
 export default router;
