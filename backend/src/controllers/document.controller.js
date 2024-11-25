@@ -73,5 +73,5 @@ export const UpdateDocument = async (req, res) => {
 export const DeleteDocument = async (req, res) => {
   const document = await Document.findOneAndDelete({ identificador: req.params.id });
   if (!document) return res.status(404).json({ message: "No se pudo encontrar el documento" });
-  return res.sendStatus(204).json({ message: "Documento eliminado con éxito" });
+  return res.sendStatus(204);
 };

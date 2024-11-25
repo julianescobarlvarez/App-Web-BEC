@@ -12,7 +12,7 @@ router.post('/login', validateSchema(loginSchema), login);//Ruta para iniciar se
 router.post('/logout', logout);//Ruta para cerrar sesión
 router.get('/perfil', authRequired, profile);//Ruta para consultar los datos del perfil
 router.patch('/perfil', authRequired, updateUser);//Ruta para modificar los datos del perfil
-router.patch('/update-role', isAdmin, updateUserRole);//Ruta para modificar el rol de otro usuario (sólo admin)
-router.delete('/delete-user/:id', isAdmin, deleteUser);//Ruta para eliminar un usuario (sólo admin)
+router.patch('/update-role', authRequired, isAdmin, updateUserRole);//Ruta para modificar el rol de otro usuario (sólo admin)
+router.delete('/delete-user/:id', authRequired, isAdmin, deleteUser);//Ruta para eliminar un usuario (sólo admin)
 
 export default router;

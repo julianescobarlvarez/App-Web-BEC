@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import { createAcessToken } from '../libs/jwt.js';
 import userModel from '../models/user.model.js';
 export const register = async (req, res) => {
-    const { nombres, apellidos, direccion, telefono, email, contraseña, foto } = req.body;
+    const { nombres, apellidos, direccion, rut, telefono, email, contraseña, foto } = req.body;
     try {
         const passwordHash = await bcrypt.hash(contraseña, 11)
 
@@ -77,7 +77,7 @@ export const profile = async (req, res) => {
     });
 }
 export const updateUser = async (req, res) => {
-    const { nombres, apellidos, direccion, telefono, foto } = req.body;
+    const { nombres, apellidos, direccion, rut, telefono, foto } = req.body;
 
     try {
         const userUpdated = await User.findByIdAndUpdate(
