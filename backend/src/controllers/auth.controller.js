@@ -111,16 +111,16 @@ export const updateUser = async (req, res) => {
 };
 //Sólo para administradores:
 export const updateUserRole = async (req, res) => {
-    const { id, role } = req.body;
+    const { id, rol } = req.body;
 
-    if (!["user", "admin"].includes(role)) {
+    if (!["user", "admin"].includes(rol)) {
         return res.status(400).json({ message: "Rol inválido." });
     }
 
     try {
         const userUpdated = await User.findByIdAndUpdate(
             id,
-            { role },
+            { rol },
             { new: true }
         );
 
