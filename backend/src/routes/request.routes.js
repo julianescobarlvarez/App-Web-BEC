@@ -14,8 +14,8 @@ const router = express.Router();
 
 
 router.post("/prestamos", authRequired, crearPrestamo);//Ruta para solicitar préstamo
-router.get("/prestamos", isAdmin, obtenerPrestamos);//Ruta para ver los préstamos (admin)
+router.get("/prestamos", authRequired, isAdmin, obtenerPrestamos);//Ruta para ver los préstamos (admin)
 router.get("/prestamos/misPrestamos", authRequired, obtenerPrestamosUsuario);//Ruta para ver los préstamos (usuario)
-router.patch("/prestamos/:identificador", isAdmin, validateSchema(updateRequestSchema), actualizarEstadoPrestamo);//Ruta para actualizar préstamos (admin)
+router.patch("/prestamos/:identificador", authRequired, isAdmin, validateSchema(updateRequestSchema), actualizarEstadoPrestamo);//Ruta para actualizar préstamos (admin)
 
 export default router;
