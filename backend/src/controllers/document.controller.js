@@ -43,19 +43,19 @@ export const getDocument = async (req, res) => {
 };
 
 export const getDocumentByName = async (req, res) => {
-  const document = await Document.find({ titulo: req.params.id });
+  const document = await Document.find({ titulo: req.params.nombre });
   if (!document) return res.status(404).json({ message: "No se pudo encontrar el documento" });
   res.json(document);
 };
 
 export const getDocumentByAuthor = async (req, res) => {
-  const document = await Document.find({ autor: req.params.id });
+  const document = await Document.find({ autor: req.params.autor });
   if (!document) return res.status(404).json({ message: "No se pudo encontrar el documento" });
   res.json(document);
 };
 
 export const getDocumentByCategory = async (req, res) => {
-  const document = await Document.find({ categoria: req.params.id });
+  const document = await Document.find({ categoria: req.params.categoria });
   if (!document) return res.status(404).json({ message: "No se pudo encontrar el documento" });
   res.json(document);
 };
