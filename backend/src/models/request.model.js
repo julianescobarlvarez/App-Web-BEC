@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+//Estructura del modelo de un pedido
 const requestSchema = new mongoose.Schema({
   usuarioId: {
     type: mongoose.Schema.Types.ObjectId,

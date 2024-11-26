@@ -2,6 +2,8 @@ import User from '../models/user.model.js';
 import bcrypt from 'bcryptjs';
 import { createAcessToken } from '../libs/jwt.js';
 import userModel from '../models/user.model.js';
+
+//Función para hacer el registro de usuarios
 export const register = async (req, res) => {
     const { nombres, apellidos, direccion, rut, telefono, email, contraseña, foto } = req.body;
     try {
@@ -34,6 +36,8 @@ export const register = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 }
+
+//Función para hacer el logueo de usuarios
 export const login = async (req, res) => {
     const { email, contraseña } = req.body;
     try {
@@ -65,7 +69,7 @@ export const logout = (req, res) => {
     });
     return res.sendStatus(200);
 }
-//Sólo al estar logeado
+//Función para solicitar un usuario por identificador. Sólo funciona al estar logeado
 export const profile = async (req, res) => {
     const userFound = await User.findById(req.user.id);
 
@@ -77,7 +81,7 @@ export const profile = async (req, res) => {
         updatedAt: userFound.updatedAt
     });
 }
-//Sólo al estar logeado
+//Función para actualizar los datos de un usuario. Sólo funciona al estar logeado
 export const updateUser = async (req, res) => {
     const { nombres, apellidos, direccion, rut, telefono, foto } = req.body;
 
@@ -111,7 +115,7 @@ export const updateUser = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
-//Sólo para administradores:
+//Función para actualizar el rol de un usuario. Sólo para administradores.
 export const updateUserRole = async (req, res) => {
     const { id, rol } = req.body;
 
@@ -138,7 +142,7 @@ export const updateUserRole = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
-//Sólo para administradores:
+//Función para eliminar un usuario del sistema. Sólo para administradores.
 export const deleteUser = async (req, res) => {
     const { id } = req.params;
 

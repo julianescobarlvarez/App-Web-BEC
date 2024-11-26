@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+//Estructura del modelo de un documento y sus atributos
 const documentSchema = new mongoose.Schema({
     identificador: {
         type: String,

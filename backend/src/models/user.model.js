@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+
+//Estructura del modelo de un usuario y sus atributos
 const userSchema = new mongoose.Schema({
     nombres: {
         type: String,

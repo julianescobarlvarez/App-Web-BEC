@@ -2,18 +2,16 @@ import Request from "../models/request.model.js";
 import Documento from "../models/document.model.js";
 import User from "../models/user.model.js";
 
-// Crear un préstamo
+// Función para crear un préstamo
 export const crearPrestamo = async (req, res) => {
   try {
     const usuarioId = req.user.id;
     const { identificador, fechaVencimiento } = req.body;
 
-
     const documento = await Documento.findOne({ identificador });
     if (!documento) {
       return res.status(404).json({ message: "Documento no encontrado" });
     }
-
 
     const nuevoPrestamo = new Request({
       usuarioId,
@@ -28,11 +26,10 @@ export const crearPrestamo = async (req, res) => {
   }
 };
 
-// para un usuario normal
+//Función para obtener el prestamo de un usuario normal
 export const obtenerPrestamosUsuario = async (req, res) => {
   try {
     const usuarioId = req.user.id;
-
 
     const prestamos = await Request.find({ usuarioId })
       .populate("documentoId", "titulo identificador tipo")
@@ -48,7 +45,7 @@ export const obtenerPrestamosUsuario = async (req, res) => {
   }
 };
 
-// para el administrador
+//Función para obtener los préstamos registrados en el sistema. Sólo para administradores
 export const obtenerPrestamos = async (req, res) => {
   try {
     const prestamos = await Request.find()
@@ -61,18 +58,16 @@ export const obtenerPrestamos = async (req, res) => {
   }
 };
 
-
+//Función para actualizar el estado de un préstamo por identificador
 export const actualizarEstadoPrestamo = async (req, res) => {
   try {
     const { identificador } = req.params; // sacar el identificador desde los parámetros de la ruta
     const { estado } = req.body;
 
-
     const documento = await Documento.findOne({ identificador });
     if (!documento) {
       return res.status(404).json({ message: "Documento no encontrado" });
     }
-
 
     const prestamo = await Request.findOneAndUpdate(
       { documentoId: documento._id }, // condición: préstamo con ese documento
@@ -83,7 +78,6 @@ export const actualizarEstadoPrestamo = async (req, res) => {
     if (!prestamo) {
       return res.status(404).json({ message: "Préstamo no encontrado para este documento" });
     }
-
     res.status(200).json(prestamo);
   } catch (error) {
     res.status(500).json({ message: "Error al actualizar el préstamo", error });

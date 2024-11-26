@@ -1,12 +1,7 @@
 import Document from "../models/document.model.js"
 
-//Para consultar todos los documentos registrados
-export const getDocuments = async (req, res) => {
-  const documents = await Document.find();
-
-  res.json(documents);
-
-};
+//Esta función toma los atributos del modelo del documento para crear una instancia,
+//comunicarse con la base de datos en MongoDB y guardar el documento
 export const createDocument = async (req, res) => {
   const {
     identificador,
@@ -35,6 +30,15 @@ export const createDocument = async (req, res) => {
   res.json(savedDocument);
 };
 
+//Para consultar todos los documentos registrados
+export const getDocuments = async (req, res) => {
+  const documents = await Document.find();
+
+  res.json(documents);
+
+};
+
+//Para consultar un documento por identificador
 export const getDocument = async (req, res) => {
   const document = await Document.findOne({ identificador: req.params.id });
   if (!document) return res.status(404).json({ message: "No se pudo encontrar el documento" });
