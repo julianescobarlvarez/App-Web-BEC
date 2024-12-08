@@ -3,7 +3,6 @@ import '../estilos/estilillo.css';
 import imagenRegistro from '../assets/logo.png';
 import imagenCrearCuenta from '../assets/crear_cuenta.png';
 import { Link } from 'react-router-dom';
-import { registerRequest } from '../api/auth';
 
 function PagRegistro() {
   const {
@@ -115,13 +114,13 @@ function PagRegistro() {
             )}
           </div>
 
-          {/* Campo User ID */}
+          {/* Campo Email */}
           <div className="campo">
             <input
-              type="text"
-              {...register('ID', { required: 'El ID es obligatorio' })}
+              type="email"
+              {...register('ID', { required: 'El correo es obligatorio' })}
               className={`input ${errors.ID ? 'input-error' : ''}`}
-              placeholder="ID de usuario*"
+              placeholder="Correo electrónico*"
             />
             {errors.rut && (
               <p className="mensaje-error">{errors.rut.message}</p>
