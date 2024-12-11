@@ -7,6 +7,10 @@ import userModel from '../models/user.model.js';
 export const register = async (req, res) => {
     const { nombres, apellidos, direccion, rut, telefono, email, contraseña, foto } = req.body;
     try {
+
+        const userFound = await User.findOne({ email });
+        if (userFound) return res.status(400).json(["El correo ya está en uso"]);
+
         const passwordHash = await bcrypt.hash(contraseña, 11)
 
         const newUser = new User({

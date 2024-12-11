@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../contexto/AuthContext';
 
 import { registerRequest } from '../api/auth';
+import { useEffect } from 'react';
+
+import { useNavigate } from 'react-router-dom';
 
 function PagRegistro() {
   const {
@@ -15,12 +18,18 @@ function PagRegistro() {
     formState: { errors },
   } = useForm();
 
-  const { signup, user } = useAuth();
+  const { signup, user, isAuthenticated, errors: registerErrors } = useAuth();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) navigate('/catalogo');
+  }, [isAuthenticated]);
 
   console.log(user);
 
   const onSubmit = handleSubmit(async (values) => {
-      // Convierte rut y telefono a números
+    // Convierte rut y telefono a números
     values.rut = Number(values.rut);
     values.telefono = Number(values.telefono);
 
@@ -71,6 +80,13 @@ function PagRegistro() {
 
       <div className="form-wrapper">
         <h2 className="registro-titulo">Registro de usuario</h2>
+        {
+          registerErrors.map((error, i) => (
+            <div className="descripcion" key={i}>
+              {error}
+            </div>
+          ))
+        }
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* Campo Nombres */}
           <div className="campo">

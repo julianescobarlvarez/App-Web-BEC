@@ -5,7 +5,7 @@ export const AuthContext = createContext();
 
 export const useAuth = () => {
     const context = useContext(AuthContext);
-    if (!context){
+    if (!context) {
         throw new Error('useAuth debe ser usado dentro de un AuthProvider');
     }
     return context;
@@ -14,10 +14,21 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    const [errors, setErrors] = useState([]);
+
     const signup = async (user) => {
-        const res = await registerRequest(user);
-        console.log(res.data);
-        setUser(res.data);
+        try {
+            const res = await registerRequest(user);
+            console.log(res.data);
+            setUser(res.data);
+            setIsAuthenticated(true);
+        } catch (error) {
+            console.log(error.response);
+            setErrors(error.response.data);
+        }
+
     };
 
     return (
@@ -25,6 +36,8 @@ export const AuthProvider = ({ children }) => {
             value={{
                 signup,
                 user,
+                isAuthenticated,
+                errors
             }}
         >
             {children}
