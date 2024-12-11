@@ -17,7 +17,7 @@ export const register = async (req, res) => {
             telefono,
             email,
             contraseña: passwordHash,
-            foto
+            foto: req.file ? `/uploads/${req.file.filename}` : null, // Ruta de la foto
         });
 
         const userSaved = await newUser.save();

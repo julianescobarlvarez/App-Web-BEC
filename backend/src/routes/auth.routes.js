@@ -5,9 +5,11 @@ import { validateSchema } from '../middlewares/validator.middleware.js';
 import { isAdmin } from '../middlewares/isAdmin.js';
 import { registerSchema, loginSchema } from '../schemas/auth.schema.js';
 
+import upload from '../middlewares/upload.middleware.js';
+
 const router = Router()
 
-router.post('/registro', validateSchema(registerSchema), register);//Ruta para registar un usuario
+router.post('/registro', validateSchema(registerSchema), upload.single('foto'), register);//Ruta para registar un usuario
 router.post('/login', validateSchema(loginSchema), login);//Ruta para iniciar sesión
 router.post('/logout', logout);//Ruta para cerrar sesión
 router.get('/perfil', authRequired, profile);//Ruta para consultar los datos del perfil

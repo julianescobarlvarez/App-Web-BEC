@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema({
         required: true,
     },
     foto: {
-        type: String, // url de la imagen
+        type: String, // ruta de la imagen
         required: false
     },
     rol: {

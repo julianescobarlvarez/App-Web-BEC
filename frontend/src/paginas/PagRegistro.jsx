@@ -4,6 +4,10 @@ import imagenRegistro from '../assets/logo.png';
 import imagenCrearCuenta from '../assets/crear_cuenta.png';
 import { Link } from 'react-router-dom';
 
+import { useAuth } from '../contexto/AuthContext';
+
+import { registerRequest } from '../api/auth';
+
 function PagRegistro() {
   const {
     register,
@@ -11,13 +15,32 @@ function PagRegistro() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (values) => {
-    console.log(values);
-  };
+  const { signup, user } = useAuth();
+
+  console.log(user);
+
+  const onSubmit = handleSubmit(async (values) => {
+      // Convierte rut y telefono a números
+    values.rut = Number(values.rut);
+    values.telefono = Number(values.telefono);
+
+    // Verifica si las conversiones son correctas
+    if (isNaN(values.rut)) {
+      console.error("El RUT debe ser un número válido.");
+      return;
+    }
+    if (isNaN(values.telefono)) {
+      console.error("El teléfono debe ser un número válido.");
+      return;
+    }
+
+    signup(values);
+
+  });
 
   return (
     <div className="registro-container">
-      
+
       {/* Encabezado */}
       <header className="header">
         <div className="header-content">
@@ -78,7 +101,7 @@ function PagRegistro() {
           {/* Campo RUT */}
           <div className="campo">
             <input
-              type="text"
+              type="number"
               {...register('rut', { required: 'El RUT es obligatorio' })}
               className={`input ${errors.rut ? 'input-error' : ''}`}
               placeholder="RUT*"
@@ -91,7 +114,7 @@ function PagRegistro() {
           {/* Campo Teléfono */}
           <div className="campo">
             <input
-              type="tel"
+              type="number"
               {...register('telefono', { required: 'El teléfono es obligatorio' })}
               className={`input ${errors.telefono ? 'input-error' : ''}`}
               placeholder="Teléfono*"
@@ -118,12 +141,12 @@ function PagRegistro() {
           <div className="campo">
             <input
               type="email"
-              {...register('ID', { required: 'El correo es obligatorio' })}
-              className={`input ${errors.ID ? 'input-error' : ''}`}
+              {...register('email', { required: 'El correo es obligatorio' })}
+              className={`input ${errors.email ? 'input-error' : ''}`}
               placeholder="Correo electrónico*"
             />
             {errors.rut && (
-              <p className="mensaje-error">{errors.rut.message}</p>
+              <p className="mensaje-error">{errors.email.message}</p>
             )}
           </div>
 
@@ -132,12 +155,12 @@ function PagRegistro() {
           <div className="campo">
             <input
               type="text"
-              {...register('password', { required: 'La contraseña es obligatoria' })}
-              className={`input ${errors.password ? 'input-error' : ''}`}
+              {...register('contraseña', { required: 'La contraseña es obligatoria' })}
+              className={`input ${errors.contraseña ? 'input-error' : ''}`}
               placeholder="Contraseña*"
             />
             {errors.rut && (
-              <p className="mensaje-error">{errors.rut.message}</p>
+              <p className="mensaje-error">{errors.contraseña.message}</p>
             )}
           </div>
 
@@ -159,10 +182,10 @@ function PagRegistro() {
           </button>
         </form>
       </div>
-        {/* Footer con dirección y horario */}
-        <footer className="footer-registro">
-          <p>Dirección: Av. Libertador Bernardo O'Higgins 1234, Estación Central, Santiago, Chile. Horario: Lunes a Viernes, 9:00 - 18:00 hrs</p>
-        </footer>
+      {/* Footer con dirección y horario */}
+      <footer className="footer-registro">
+        <p>Dirección: Av. Libertador Bernardo O'Higgins 1234, Estación Central, Santiago, Chile. Horario: Lunes a Viernes, 9:00 - 18:00 hrs</p>
+      </footer>
     </div>
   );
 }
