@@ -15,9 +15,7 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-
     const [errors, setErrors] = useState([]);
 
     const [loading, setLoading] = useState(true);
@@ -28,12 +26,14 @@ export const AuthProvider = ({ children }) => {
             console.log(res.data);
             setUser(res.data);
             setIsAuthenticated(true);
+            setErrors([]);
         } catch (error) {
-            console.log(error.response);
-            setErrors(error.response.data);
+            console.error(error.response);
+            setErrors(error.response?.data || ['Error durante el registro']);
         }
-
     };
+
+
 
     // Método para iniciar sesión
     const signin = async (email, password) => {
@@ -90,5 +90,6 @@ export const AuthProvider = ({ children }) => {
             }}
         >
             {children}
-        </AuthContext.Provider>);
+        </AuthContext.Provider>
+    );
 };
