@@ -22,10 +22,10 @@ function PagLogin() {
   // Acceso al contexto de autenticación
   const { signin, isAuthenticated, loginError } = useAuth();
 
-  // Redirigir al usuario al dashboard si ya está autenticado
+  // Redirigir al usuario al catalogo si ya está autenticado
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/dashboard');
+      navigate('/catalogo');
     }
   }, [isAuthenticated, navigate]);
 
@@ -40,29 +40,29 @@ function PagLogin() {
   };
 
   return (
-    <div className="login-container">
+    <div className="registro-container">
       {/* Encabezado con logo y título */}
       <header className="header">
         <div className="header-content">
           <img src={imagenRegistro} alt="Logo de registro" className="logo" />
           <h1>
-            <span className="title-bec">BEC</span>
-            <span className="title-library">Biblioteca Estación Central</span>
+            <span className="titulo-bec">BEC</span>
+            <span className="titulo-biblioteca">Biblioteca Estación Central</span>
           </h1>
         </div>
       </header>
 
       {/* Barra de navegación */}
-      <nav className="nav-bar">
+      <nav className="nav-prestamo">
         <Link to="/" className="nav-link">Acerca de</Link>
-        <Link to="/catalog" className="nav-link">Catálogo</Link>
-        <Link to="/loan" className="nav-link">Préstamo</Link>
+        <Link to="/catalogo" className="nav-link">Catálogo</Link>
+        <Link to="/prestamo" className="nav-link">Préstamo</Link>
         <Link to="/login" className="nav-link">Iniciar sesión</Link>
-        <Link to="/register" className="nav-link">Registro</Link>
+        <Link to="/registro" className="nav-link">Registro</Link>
       </nav>
 
       {/* Imagen de inicio de sesión */}
-      <img src={imagenLogIn} alt="Imagen Login" className="login-image" />
+      <img src={imagenLogIn} alt="Imagen Login" className="imagen-login" />
 
       {/* Mensaje de error de inicio de sesión */}
       {loginError && (
@@ -71,10 +71,10 @@ function PagLogin() {
 
       {/* Formulario de inicio de sesión */}
       <form className="form-wrapper" onSubmit={handleSubmit(onSubmit)}>
-        <h2 className="login-title">Inicio de sesión</h2>
+        <h2 className="registro-titulo">Inicio de sesión</h2>
 
         {/* Campo de correo electrónico */}
-        <div className="field">
+        <div className="campo">
           <input
             type="email"
             {...register('email', {
@@ -93,7 +93,7 @@ function PagLogin() {
         </div>
 
         {/* Campo de contraseña */}
-        <div className="field">
+        <div className="campo">
           <input
             type="password"
             {...register('password', {
@@ -112,7 +112,7 @@ function PagLogin() {
         </div>
 
         {/* Botón de envío */}
-        <button className="register-button" type="submit">
+        <button className="boton-registrar" type="submit">
           Ingresar
         </button>
 
