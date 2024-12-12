@@ -7,6 +7,8 @@ import PagCatalogo from './paginas/PagCatalogo';
 
 import { AuthProvider } from './contexto/AuthContext';
 
+import ProtectedRoute from './ProtectedRoute';
+
 function App() {
   return (
     <AuthProvider>
@@ -17,8 +19,13 @@ function App() {
             <Route path='/' element={<HomePage />} />
             <Route path='/login' element={<PagLogin />} />
             <Route path='/registro' element={<PagRegistro />} />
-            <Route path='/prestamo' element={<SolicitudPrestamo />} />
             <Route path='/catalogo' element={<PagCatalogo />} />
+
+            <Route element= {<ProtectedRoute/>}>
+            <Route path='/prestamo' element={<SolicitudPrestamo />} />
+              
+            </Route>
+
           </Route>
         </Routes>
       </BrowserRouter>

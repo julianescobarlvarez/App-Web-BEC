@@ -3,6 +3,10 @@ import bcrypt from 'bcryptjs';
 import { createAcessToken } from '../libs/jwt.js';
 import userModel from '../models/user.model.js';
 
+import jwt from 'jsonwebtoken';
+
+import { TOKEN_SECRET } from '../config.js';
+
 //Función para hacer el registro de usuarios
 export const register = async (req, res) => {
     const { nombres, apellidos, direccion, rut, telefono, email, contraseña, foto } = req.body;
@@ -27,7 +31,9 @@ export const register = async (req, res) => {
         const userSaved = await newUser.save();
 
         const token = await createAcessToken({ id: userSaved._id })
+
         res.cookie("token", token);
+
         res.json({
             id: userSaved._id,
             nombres: userSaved.nombres,
@@ -161,3 +167,22 @@ export const deleteUser = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+export const verifyToken = async (req, res) => {
+    const {token} = req.cookies
+
+    if (!token) return res.status(400).json({ message: 'No autorizado'});
+
+    jwt.verify(token, TOKEN_SECRET, async (err, user) => {
+        if (err) return res.status(401).json({ message: 'No autorizado'});
+
+        const userFound = await user.findById(user.id)
+        if (!userFound) return res.status(401).json({ message: 'No autorizado'});
+
+        return res.json({
+            id: userFound._id,
+            nombres: userFound.nombres,
+            email: userFound.email
+        })
+    })
+}

@@ -10,7 +10,9 @@ import path from 'path';
 
 const app = express();
 
-app.use(cors()); // para que todos los dominios se puedan comunicar con este servidor
+app.use(cors({
+    credentials: true
+})); // para que todos los dominios se puedan comunicar con este servidor
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(cookieParser());

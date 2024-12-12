@@ -20,9 +20,9 @@ function PagLogin() {
   const navigate = useNavigate();
 
   // Acceso al contexto de autenticación
-  const { signin, isAuthenticated, loginError } = useAuth();
+  const { signin, isAuthenticated, errors: authErrors } = useAuth();
 
-  // Redirigir al usuario al catalogo si ya está autenticado
+  // Redirigir al usuario al catálogo si ya está autenticado
   useEffect(() => {
     if (isAuthenticated) {
       navigate('/catalogo');
@@ -65,8 +65,12 @@ function PagLogin() {
       <img src={imagenLogIn} alt="Imagen Login" className="imagen-login" />
 
       {/* Mensaje de error de inicio de sesión */}
-      {loginError && (
-        <div className="error-message">{loginError}</div>
+      {authErrors.length > 0 && (
+        <div className="error-message">
+          {authErrors.map((error, index) => (
+            <p key={index}>{error}</p>
+          ))}
+        </div>
       )}
 
       {/* Formulario de inicio de sesión */}
@@ -78,10 +82,10 @@ function PagLogin() {
           <input
             type="email"
             {...register('email', {
-              required: 'El correo electrónico es obligatorio',
+              required: 'Campo Oblicatorio',
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                message: 'Correo electrónico inválido',
+                message: 'Email inválido',
               },
             })}
             className={`input ${errors.email ? 'input-error' : ''}`}
@@ -97,10 +101,10 @@ function PagLogin() {
           <input
             type="password"
             {...register('password', {
-              required: 'La contraseña es obligatoria',
+              required: 'Campo obligatorio',
               minLength: {
-                value: 6,
-                message: 'La contraseña debe tener al menos 6 caracteres',
+                value: 5,
+                message: 'La contraseña debe tener mínimo 5 caracteres',
               },
             })}
             className={`input ${errors.password ? 'input-error' : ''}`}
@@ -121,6 +125,11 @@ function PagLogin() {
           <Link to="/reset-password" className="text-blue-500 hover:underline">
             ¿Olvidaste tu contraseña?
           </Link>
+        </div>
+
+        {/* Enlace para registrarse */}
+        <div className="mt-4 text-center">
+          <p>¿Aún no tienes cuenta? <Link to="/registro" className="text-blue-500 hover:underline">Regístrate aquí</Link></p>
         </div>
       </form>
 

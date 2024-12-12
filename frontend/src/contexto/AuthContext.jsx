@@ -1,5 +1,7 @@
 import { createContext, useState, useContext } from 'react';
-import { registerRequest } from '../api/auth';
+import { registerRequest, verifyTokenRequest, loginRequest } from '../api/auth';
+
+import Cookies from 'js-cookie';
 
 export const AuthContext = createContext();
 
@@ -18,6 +20,8 @@ export const AuthProvider = ({ children }) => {
 
     const [errors, setErrors] = useState([]);
 
+    const [loading, setLoading] = useState(true);
+
     const signup = async (user) => {
         try {
             const res = await registerRequest(user);
@@ -31,10 +35,55 @@ export const AuthProvider = ({ children }) => {
 
     };
 
+    // Método para iniciar sesión
+    const signin = async (email, password) => {
+        try {
+            const res = await loginRequest({ email, password });
+            console.log('Inicio de sesión exitoso:', res.data);
+            setUser(res.data);
+            setIsAuthenticated(true);
+            setErrors([]);
+        } catch (error) {
+            console.log(error.response.data)
+            console.error('Error al iniciar sesión:', error.response);
+            setErrors(error.response.data);
+        }
+    };
+
+    useEffect(() => {
+        async function checkLogin() {
+            const cookies = Cookies.get();
+            if (!cookies.token) {
+                setIsAuthenticated(false);
+                setUser(false);
+                setLoading(false);
+            }
+            try {
+                const res = await verifyTokenRequest(cookies.token);
+                if (!res.data) {
+                    setIsAuthenticated(false);
+                    setLoading(false);
+                    return;
+                }
+
+                setIsAuthenticated(true);
+                setUser(res.data);
+                setLoading(false);
+            } catch (error) {
+                setIsAuthenticated(false);
+                setUser(null);
+                setLoading(false);
+            }
+        }
+        checkLogin();
+    }, [])
+
     return (
         <AuthContext.Provider
             value={{
                 signup,
+                signin,
+                loading,
                 user,
                 isAuthenticated,
                 errors
