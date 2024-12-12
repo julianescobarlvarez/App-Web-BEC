@@ -1,83 +1,138 @@
-import React, { useState } from 'react' // Importa React y el hook useState
-import { useForm } from 'react-hook-form' // Importa useForm para manejar el formulario
-import { useNavigate } from 'react-router-dom' // Importa useNavigate para redirigir entre rutas
-import imagenRegistro from '../assets/logo.png';
-import '../estilos/estilillo.css';
+import React, { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+
+import { useAuth } from '../context/AuthContext';
+import imagenRegistro from '../assets/logo.png';
 import imagenLogIn from '../assets/login.png';
+import '../styles/styles.css';
 
 function PagLogin() {
-    const { register, handleSubmit, formState: { errors } } = useForm() // Inicializa el formulario
-    const navigate = useNavigate() // Permite la navegación entre rutas
-    const [authError, setAuthError] = useState('') // Estado para mensajes de error de autenticación
+  // Configuración de react-hook-form para manejar el formulario
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-    const onSubmit = (values) => {
-        console.log(values) // Imprime los valores del formulario
-        // Verifica las credenciales
-        if (values.userId === "admin" && values.password === "password") {
-            navigate('/dashboard') // Redirige a '/dashboard' si las credenciales son correctas
-        } else {
-            setAuthError('Credenciales inválidas') // Muestra mensaje de error si las credenciales son incorrectas
-        }
+  // Hook para la navegación entre rutas
+  const navigate = useNavigate();
+
+  // Acceso al contexto de autenticación
+  const { signin, isAuthenticated, loginError } = useAuth();
+
+  // Redirigir al usuario al dashboard si ya está autenticado
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/dashboard');
     }
+  }, [isAuthenticated, navigate]);
 
-    return (
-        <div className='registro-container'>
-            {/* Encabezado */}
-            <header className="header">
-                <div className="header-content">
-                <img src={imagenRegistro} alt="Logo de registro" className="logo" />
-                <h1>
-                    <span className="titulo-bec">BEC</span>
-                    <span className="titulo-biblioteca">Biblioteca Estación Central</span>
-                </h1>
-                </div>
-            </header>
-            {/* Navegación */}
-            <nav className="nav-prestamo">
-                <Link to="/" className="nav-link">Acerca de</Link>
-                <Link to="/catalogo" className="nav-link">Catálogo</Link>
-                <Link to="/prestamo" className="nav-link">Préstamo</Link>
-                <Link to="/login" className="nav-link">Iniciar sesión</Link>
-                <Link to="/registro" className="nav-link">Registro</Link>
-            </nav>
-            <img src={imagenLogIn} alt="Imagen Login" className="imagen-login" />
-            <form className="form-wrapper"onSubmit={handleSubmit(onSubmit)}> {/* Maneja el envío del formulario */}
-                <h2 className="registro-titulo">Inicio de sesión</h2>
-                <div className="campo">
-                <input 
-                    type="text" 
-                    {...register("userId", {required: "El ID de usuario es requerido"})} // Campo de ID de usuario
-                    className={`input ${errors.userId ? 'input-error' : ''}`}
-                    placeholder='ID de Usuario*'
-                />
-                {errors.userId && <p className="text-red-500 text-xs mt-1">{errors.userId.message}</p>} {/* Mensaje de error */}
-                </div>
-                <div className="campo">
-                <input 
-                    type="password" 
-                    {...register("password", {
-                        required: "La contraseña es requerida", // Campo de contraseña
-                        minLength: { value: 6, message: "La contraseña debe tener al menos 6 caracteres" }
-                    })}
-                    className={`input ${errors.password ? 'input-error' : ''}`}
-                    placeholder='Contraseña*'
-                />
-                </div>
-                {errors.password && <p className="text-red-500 text-xs mt-1">{errors.password.message}</p>} {/* Mensaje de error */}
+  // Manejo del envío del formulario
+  const onSubmit = async (values) => {
+    try {
+      // Llama a la función signin del contexto para autenticar al usuario
+      await signin(values.email, values.password);
+    } catch (error) {
+      console.error('Error durante el inicio de sesión:', error);
+    }
+  };
 
-                {authError && <p className="text-red-500 text-xs mt-1">{authError}</p>} {/* Mensaje de error de autenticación */}
-
-                <button className='boton-registrar'>
-                    Ingresar
-                </button>
-            </form>
-            {/* Footer con dirección y horario */}
-            <footer className="footer">
-                <p>Dirección: Av. Libertador Bernardo O'Higgins 1234, Estación Central, Santiago, Chile. Horario: Lunes a Viernes, 9:00 - 18:00 hrs</p>
-            </footer>
+  return (
+    <div className="login-container">
+      {/* Encabezado con logo y título */}
+      <header className="header">
+        <div className="header-content">
+          <img src={imagenRegistro} alt="Logo de registro" className="logo" />
+          <h1>
+            <span className="title-bec">BEC</span>
+            <span className="title-library">Biblioteca Estación Central</span>
+          </h1>
         </div>
-    )
+      </header>
+
+      {/* Barra de navegación */}
+      <nav className="nav-bar">
+        <Link to="/" className="nav-link">Acerca de</Link>
+        <Link to="/catalog" className="nav-link">Catálogo</Link>
+        <Link to="/loan" className="nav-link">Préstamo</Link>
+        <Link to="/login" className="nav-link">Iniciar sesión</Link>
+        <Link to="/register" className="nav-link">Registro</Link>
+      </nav>
+
+      {/* Imagen de inicio de sesión */}
+      <img src={imagenLogIn} alt="Imagen Login" className="login-image" />
+
+      {/* Mensaje de error de inicio de sesión */}
+      {loginError && (
+        <div className="error-message">{loginError}</div>
+      )}
+
+      {/* Formulario de inicio de sesión */}
+      <form className="form-wrapper" onSubmit={handleSubmit(onSubmit)}>
+        <h2 className="login-title">Inicio de sesión</h2>
+
+        {/* Campo de correo electrónico */}
+        <div className="field">
+          <input
+            type="email"
+            {...register('email', {
+              required: 'El correo electrónico es obligatorio',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'Correo electrónico inválido',
+              },
+            })}
+            className={`input ${errors.email ? 'input-error' : ''}`}
+            placeholder="Correo Electrónico*"
+          />
+          {errors.email && (
+            <p className="error-text">{errors.email.message}</p>
+          )}
+        </div>
+
+        {/* Campo de contraseña */}
+        <div className="field">
+          <input
+            type="password"
+            {...register('password', {
+              required: 'La contraseña es obligatoria',
+              minLength: {
+                value: 6,
+                message: 'La contraseña debe tener al menos 6 caracteres',
+              },
+            })}
+            className={`input ${errors.password ? 'input-error' : ''}`}
+            placeholder="Contraseña*"
+          />
+          {errors.password && (
+            <p className="error-text">{errors.password.message}</p>
+          )}
+        </div>
+
+        {/* Botón de envío */}
+        <button className="register-button" type="submit">
+          Ingresar
+        </button>
+
+        {/* Enlace para recuperar contraseña */}
+        <div className="mt-4 text-center">
+          <Link to="/reset-password" className="text-blue-500 hover:underline">
+            ¿Olvidaste tu contraseña?
+          </Link>
+        </div>
+      </form>
+
+      {/* Pie de página con información de contacto */}
+      <footer className="footer">
+        <p>
+          Dirección: Av. Libertador Bernardo O'Higgins 1234, Estación Central,
+          Santiago, Chile. Horario: Lunes a Viernes, 9:00 - 18:00 hrs
+        </p>
+      </footer>
+    </div>
+  );
 }
 
-export default PagLogin // Exporta el componente
+export default PagLogin;
