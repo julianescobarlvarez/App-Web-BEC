@@ -17,6 +17,6 @@ router.patch('/perfil', authRequired, updateUser);//Ruta para modificar los dato
 router.patch('/update-role', authRequired, isAdmin, updateUserRole);//Ruta para modificar el rol de otro usuario (sólo admin)
 router.delete('/delete-user/:id', authRequired, isAdmin, deleteUser);//Ruta para eliminar un usuario (sólo admin)
 
-router.get('/verify', verifyToken)
+router.get('/verify', verifyToken);
 
 export default router;

@@ -29,11 +29,14 @@ function PagLogin() {
     }
   }, [isAuthenticated, navigate]);
 
+//console.log(isAuthenticated)
+
   // Manejo del envío del formulario
   const onSubmit = async (values) => {
     try {
       // Llama a la función signin del contexto para autenticar al usuario
-      await signin(values.email, values.password);
+      console.log(values);
+      await signin(values.email, values.contraseña);
     } catch (error) {
       console.error('Error durante el inicio de sesión:', error);
     }
@@ -72,7 +75,6 @@ function PagLogin() {
           ))}
         </div>
       )}
-
       {/* Formulario de inicio de sesión */}
       <form className="form-wrapper" onSubmit={handleSubmit(onSubmit)}>
         <h2 className="registro-titulo">Inicio de sesión</h2>
@@ -100,18 +102,18 @@ function PagLogin() {
         <div className="campo">
           <input
             type="password"
-            {...register('password', {
+            {...register('contraseña', {
               required: 'Campo obligatorio',
               minLength: {
                 value: 5,
                 message: 'La contraseña debe tener mínimo 5 caracteres',
               },
             })}
-            className={`input ${errors.password ? 'input-error' : ''}`}
+            className={`input ${errors.contraseña ? 'input-error' : ''}`}
             placeholder="Contraseña*"
           />
-          {errors.password && (
-            <p className="error-text">{errors.password.message}</p>
+          {errors.contraseña && (
+            <p className="error-text">{errors.contraseña.message}</p>
           )}
         </div>
 

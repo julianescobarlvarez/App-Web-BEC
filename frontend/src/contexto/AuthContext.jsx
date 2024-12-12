@@ -36,9 +36,9 @@ export const AuthProvider = ({ children }) => {
 
 
     // Método para iniciar sesión
-    const signin = async (email, password) => {
+    const signin = async (email, contraseña) => {
         try {
-            const res = await loginRequest({ email, password });
+            const res = await loginRequest({ email, contraseña });
             console.log('Inicio de sesión exitoso:', res.data);
             setUser(res.data);
             setIsAuthenticated(true);
@@ -57,6 +57,7 @@ export const AuthProvider = ({ children }) => {
                 setIsAuthenticated(false);
                 setUser(false);
                 setLoading(false);
+                return;
             }
             try {
                 const res = await verifyTokenRequest(cookies.token);

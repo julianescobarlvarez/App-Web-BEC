@@ -22,12 +22,11 @@ function PagRegistro() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (isAuthenticated) navigate('/catalogo');
-  }, [isAuthenticated]);
+//  useEffect(() => {
+//    if (isAuthenticated) navigate('/login');
+//  }, [isAuthenticated]);
 
-  console.log(user);
-
+//  console.log(isAuthenticated)
   const onSubmit = handleSubmit(async (values) => {
     // Convierte rut y telefono a números
     values.rut = Number(values.rut);

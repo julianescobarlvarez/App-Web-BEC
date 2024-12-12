@@ -15,17 +15,13 @@ function App() {
 
       <BrowserRouter>
         <Routes>
-          <Route>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/login' element={<PagLogin />} />
-            <Route path='/registro' element={<PagRegistro />} />
-            <Route path='/catalogo' element={<PagCatalogo />} />
+          <Route path='/' element={<HomePage />} />
+          <Route path='/login' element={<PagLogin />} />
+          <Route path='/registro' element={<PagRegistro />} />
+          <Route path='/catalogo' element={<PagCatalogo />} />
 
-            <Route element= {<ProtectedRoute/>}>
+          <Route element= {<ProtectedRoute/>}>
             <Route path='/prestamo' element={<SolicitudPrestamo />} />
-              
-            </Route>
-
           </Route>
         </Routes>
       </BrowserRouter>

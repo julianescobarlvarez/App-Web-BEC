@@ -11,6 +11,7 @@ import path from 'path';
 const app = express();
 
 app.use(cors({
+    origin: "http://localhost:5173",
     credentials: true
 })); // para que todos los dominios se puedan comunicar con este servidor
 app.use(morgan('dev'));
