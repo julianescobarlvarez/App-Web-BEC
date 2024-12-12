@@ -22,10 +22,10 @@ function PagLogin() {
   // Acceso al contexto de autenticación
   const { signin, isAuthenticated, loginError } = useAuth();
 
-  // Redirigir al usuario al dashboard si ya está autenticado
+  // Redirigir al usuario al catalogo si ya está autenticado
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/dashboard');
+      navigate('/catalogo');
     }
   }, [isAuthenticated, navigate]);
 
