@@ -3,10 +3,10 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../contexto/AuthContext.jsx';
 import imagenRegistro from '../assets/logo.png';
 import imagenLogIn from '../assets/login.png';
-import '../styles/styles.css';
+import '../estilos/estilillo.css';
 
 function PagLogin() {
   // Configuración de react-hook-form para manejar el formulario
