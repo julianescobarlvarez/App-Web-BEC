@@ -87,12 +87,19 @@ export const AuthProvider = ({ children }) => {
             return () => clearTimeout(timer)
         }
     })
+    const logout = () => {
+        // Clear the token from cookies or localStorage
+        document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;"; // For cookies
+        // localStorage.removeItem('token'); // If you're using localStorage
+        setIsAuthenticated(false); // Update the context state
+    };
 
     return (
         <AuthContext.Provider
             value={{
                 signup,
                 signin,
+                logout,
                 loading,
                 user,
                 isAuthenticated,

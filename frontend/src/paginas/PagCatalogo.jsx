@@ -7,10 +7,26 @@ import imagenRegistro from '../assets/logo.png';
 import iconoLupa from '../assets/icono_lupa.png';
 import imagenCatalogo from '../assets/catalogo.png';
 
+import { useNavigate } from 'react-router-dom';
+
+import { useAuth } from '../contexto/AuthContext';
+
+
 function PagCatalogo(){
-    //Funciones del UseForm y UseState
+    
+    //Funciones del UseForm, UseState y useAuth
+    const { isAuthenticated, logout } = useAuth();
     const {register, handleSubmit, reset} = useForm();//estado del formulario
     const [esVisible, setEsVisible] = useState(false);//estado de visibilidad del filtro
+
+    //Función para el cierre de sesión
+    const handleLogout = () => {
+        logout(); // Call the logout function from the context
+        navigate('/login'); // Redirect to login page after logging out
+      };
+
+    //Hook para la navegación entre rutas
+    const navigate = useNavigate();
 
     //Función para la visibilidad del filtro
     const alternarDiv = () => {
@@ -51,7 +67,10 @@ function PagCatalogo(){
                 <Link to="/prestamo" className="nav-link">Préstamo</Link>
                 <Link to="/login" className="nav-link">Iniciar sesión</Link>
                 <Link to="/registro" className="nav-link">Registro</Link>
-            </nav>
+                {isAuthenticated && (
+    <button className="nav-link" onClick={handleLogout}>Cerrar sesión</button>
+  )}
+</nav>
             {/* Imagencilla */}
             <img src={imagenCatalogo} alt="imagen catalogo" className="imagen-principal-catalogo"/>
             <div className='form-catalogo'>

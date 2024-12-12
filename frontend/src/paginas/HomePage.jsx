@@ -3,8 +3,21 @@ import '../estilos/estilillo.css';
 import logo from '../assets/logo.png';
 import imagenBiblioteca from '../assets/imagen.jpg';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../contexto/AuthContext';
+
+import { useNavigate } from 'react-router-dom';
 
 function Homepage() {
+
+  const { isAuthenticated, logout } = useAuth();
+  const handleLogout = () => {
+    logout(); // Call the logout function from the context
+    navigate('/login'); // Redirect to login page after logging out
+  };
+
+  // Hook para la navegación entre rutas
+  const navigate = useNavigate();
+
   return (
     <div className="homepage-container">
       {/* Header con logo y título */}
@@ -23,7 +36,10 @@ function Homepage() {
         <Link to="/prestamo" className="nav-link">Préstamo</Link>
         <Link to="/login" className="nav-link">Iniciar sesión</Link>
         <Link to="/registro" className="nav-link">Registro</Link>
-      </nav>
+        {isAuthenticated && (
+    <button className="nav-link" onClick={handleLogout}>Cerrar sesión</button>
+  )}
+</nav>
 
       {/* Sección principal con mensaje y descripción */}
         <h2 className="hero-title">Bienvenid@</h2>
