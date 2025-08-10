@@ -15,4 +15,4 @@ Para desarrollar este proyecto, se empleó un conjunto de herramientas basado en
 * Nodejs, un entorno de trabajo para ejecutar el lenguaje de JavaScript en el servidor.
 * React, una biblioteca de frontend para manejar la parte visual de una aplicación web. Contempla los lenguajes HTML, CSS y JavaScript para su uso, conocido por su extensión jsx.
 
-Además de la integración del framework Vite para acelerar el desarrollo frontend junto con el framework TailWind CSS para realizar los diseños CSS directamente en HTML.
+Además de la integración del framework Vite para acelerar el desarrollo frontend junto con el framework Tailwind CSS para realizar los diseños CSS directamente en HTML.
