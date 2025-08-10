@@ -16,3 +16,6 @@ Para desarrollar este proyecto, se empleó un conjunto de herramientas basado en
 * React, una biblioteca de frontend para manejar la parte visual de una aplicación web. Contempla los lenguajes HTML, CSS y JavaScript para su uso, conocido por su extensión jsx.
 
 Además de la integración del framework Vite para acelerar el desarrollo frontend junto con el framework Tailwind CSS para realizar los diseños CSS directamente en HTML.
+
+## Otras Tecnologías empleadas
+* Thunder Client para simular solicitudes HTTP (GET, POST, PUT, DELETE) de la API y hacer pruebas de API Rest.
