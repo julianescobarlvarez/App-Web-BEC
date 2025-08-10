@@ -1,4 +1,4 @@
-# App-Web-BEC
+# Web-App-BEC
 Proyecto universitario de desarrollo web: Aplicación Web para la Biblioteca de Estación Central.
 
 <br><br>
